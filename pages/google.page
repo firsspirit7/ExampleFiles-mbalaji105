@@ -1,0 +1,5 @@
+<apex:page >
+<apex:form >
+<apex:commandLink action="{!save}" value="Save" id="theCommandLink"/>
+</apex:form>
+</apex:page>

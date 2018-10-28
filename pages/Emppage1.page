@@ -1,0 +1,27 @@
+<apex:page standardController="EmployeeDetail__c" recordSetVar="emp" showHeader="false" >
+<!--Author:Balaji M ,Date:29-7-2011-->
+<!-- when we want to access the data from an object we should specify standardController and recordsetvar -->
+<apex:form id="form" >
+<div id="edit">
+<apex:pageBlock title="empdetails"> 
+ <apex:pageMessages ></apex:pageMessages> 
+  <apex:pageBlockSection id="tab"> 
+ <apex:pageBlockTable value="{!emp}" var="e">   
+   <apex:column >       
+   <apex:outputLink title="" value="/{!e.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold" >Edit</apex:outputLink>&nbsp;|&nbsp;       
+   <!--The About retUrl redirect to insert page of EmployeeDetail__c-->
+     </apex:column>
+   <apex:column value="{!e.Name}"/>     
+   <apex:column value="{!e.Department__c}"/>    
+    <apex:column value="{!e.Email__c}"/>    
+     <apex:column value="{!e.Phone__c}"/>    
+      <apex:column value="{!e.Salary__c}"/>  
+      <!-- The merge fields specified in the value attribute of column tag used for accessing the data from EmployeeDetail__c by using RecordSetVar-->
+      
+      </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+        </div>
+
+              </apex:form>
+        </apex:page>

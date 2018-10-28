@@ -1,0 +1,22 @@
+<apex:page standardController="EmployeeDetail__c" showHeader="false">
+  
+  <!--An area of a page that uses styling similar to the appearance of a Salesforce detail page, but without any default content.-->
+
+
+  <apex:form >
+ <!--A section of a Visualforce page that allows users to enter input and then submit it with an < apex:commandButton > or < apex:commandLink > --> 
+  <!--The pageBlock should be in between form component -->
+  <apex:pageBlock title="EmployeDetail">
+  <apex:pageBlockSection id="detail" >
+ <apex:inputField value="{!EmployeeDetail__c.Name}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Phone__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Department__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Email__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Salary__c}"/>
+ <!--component respects the attributes of the associated field, including whether the field is required or unique, and the user interface widget to display to get input from the user.-->
+ <apex:commandButton action="{!quicksave}"  value="save" oncomplete="window.location.reload();"/>
+ <!-- The button executes an action defined by a controller, and then either refreshes the current page, or navigates to a different page based on the PageReference variable that is returned by the action.-->
+   </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+  </apex:page>

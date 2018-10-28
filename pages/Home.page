@@ -1,0 +1,11 @@
+<apex:page >
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page.This is Balaji Malemarpuram
+  <!-- End Default Content REMOVE THIS -->
+<apex:outputPanel layout="block" style="background-color:#0000FF"/>'/t'
+ <apex:outputLink value="http://developer.force.com/">Click me!</apex:outputLink>
+<apex:outputLink value="http://login.salesforce.com/">Login Salesforce</apex:outputLink>
+<apex:outputLink value="http://mail.appshark.com/">Login to Appshark</apex:outputLink>
+<apex:outputLink value="http://www.google.com/">Google</apex:outputLink>
+</apex:page>

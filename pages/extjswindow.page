@@ -1,0 +1,37 @@
+<apex:page showHeader="false" standardStylesheets="false"  >
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+    <script type="text/javascript">
+    Ext.onReady(function(){
+    var win=new Ext.Window({
+     title:'mywindow',
+     width:400,
+     height:300,
+     html:'hi this is balaji'    
+    });
+    win.show();
+    var panel = new Ext.TabPanel ({ 
+width: 300, 
+height: 200, 
+items: [{ 
+title: "panel01", 
+height: 30 
+}, { 
+title: "panel02", 
+height: 30,
+xtype:'textfield' 
+
+}, { 
+title: "panel03", 
+height: 30 
+}] 
+}); 
+panel.render ("hello"); 
+
+    });
+   
+    </script>
+  <div id="hello"></div>
+  <div id="balu"></div>
+</apex:page>

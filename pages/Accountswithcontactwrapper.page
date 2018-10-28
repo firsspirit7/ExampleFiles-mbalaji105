@@ -1,0 +1,14 @@
+<apex:page controller="Accountwithcontactscls">
+<apex:repeat value="{!lst}" var="a">
+<apex:outputField value="{!a.acc.name}"/>
+<apex:pageBlock >
+<apex:pageBlocktable value="{!a.cntlst}" var="c" > 
+<apex:column value="{!c.name}"/>
+</apex:pageBlocktable>
+
+
+</apex:pageBlock>
+
+</apex:repeat>
+ 
+</apex:page>

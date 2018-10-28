@@ -1,0 +1,5 @@
+<apex:page >
+<apex:pageBlock title="Lead Information">
+  <c:Testcomp ></c:Testcomp>
+  </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,9 @@
+<apex:page Controller="dataListCon"  id="thePage">
+
+        <apex:dataList value="{!accounts}" var="a" id="theList">
+
+                <apex:outputField value="{!a.name}"/>
+
+        </apex:dataList>
+
+</apex:page>

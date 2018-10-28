@@ -1,0 +1,19 @@
+<apex:page >
+ 
+  <script src="../../soap/ajax/22.0/connection.js" type="text/javascript"></script>
+  <script type="text/javascript">
+function setupPage() {
+sforce.connection.query("Select Id, Name, Industry From Account"),
+{onSuccess : layoutResults,
+onFailure : queryFailed,
+source : {
+output : document.getElementById("output"),
+startTime : new Date().getTime()
+}
+});
+}
+</script>
+ <body onload="setupPage();">
+<div id="output"></div>
+</body>
+</apex:page>

@@ -1,0 +1,46 @@
+<apex:page id="pg" >
+   <!--link rel="Stylesheet" type="text/css" href="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css" />
+    <script type="text/javascript" src="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"></script>
+    <script type="text/javascript" src="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"></script -->
+    
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+
+
+<script>
+
+Ext.onReady(function(){
+    alert('Entering');
+    Ext.get('pg:fm:mb1').on('click', function(e){
+    Ext.get('pg:fm:name').dom.value='Appshark';
+    alert('Hi');
+    Ext.MessageBox.confirm('Confirm', 'Are you sure you want to do that?', showResult);
+        Ext.fly('info').dom.value = Ext.MessageBox.INFO;
+    Ext.fly('question').dom.value = Ext.MessageBox.QUESTION;
+    Ext.fly('warning').dom.value = Ext.MessageBox.WARNING;
+    Ext.fly('error').dom.value = Ext.MessageBox.ERROR;
+
+
+    function showResult(btn){
+        Ext.example.msg('Button Click', 'You clicked the {0} button', btn);
+    };
+
+    function showResultText(btn, text){
+        Ext.example.msg('Button Click', 'You clicked the {0} button and entered the text "{1}".', btn, text);
+    };
+    });
+
+    
+});
+</script>
+<apex:form id="fm">
+
+    <b>Click on this button</b><br />
+    <apex:inputText id="name"/>
+  <apex:commandButton id="mb1" value="Click"/> 
+    <!--button id="mb1">Show</button -->
+
+</apex:form>
+
+</apex:page>

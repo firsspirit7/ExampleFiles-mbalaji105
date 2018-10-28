@@ -1,0 +1,12 @@
+<apex:page standardController="Account" recordSetVar="acts">
+<apex:pageBlock title="Hello {!$User.FirstName}!">
+You are viewing the {!account.name} account.
+</apex:pageBlock>
+<apex:pageBlock title="Contacts">
+<apex:pageBlockTable value="{!acts}" var="t">
+<apex:column headervalue="Name" value="{!t.Name}"/>
+<apex:column headervalue="accountnumber" value="{!t.accountnumber}"/>
+<apex:column headervalue="Phone" value="{!t.Phone}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

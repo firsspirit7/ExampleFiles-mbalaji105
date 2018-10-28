@@ -1,0 +1,19 @@
+<apex:page controller="collegecontroller">
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockButtons >
+  <apex:commandButton value="save" action="{!save}"/>
+  </apex:pageBlockButtons>
+  <apex:pageBlockSection >
+  <apex:outputLabel >Name</apex:outputLabel>
+  <apex:inputText value="{!name}"/>
+  <apex:outputLabel >Location</apex:outputLabel>
+  <apex:inputText value="{!location}"/>
+  <apex:outputLabel >Strength</apex:outputLabel>
+  <apex:inputText value="{!strength}"/>
+  
+  </apex:pageBlockSection>
+  
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

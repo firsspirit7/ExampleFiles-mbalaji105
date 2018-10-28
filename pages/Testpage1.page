@@ -1,0 +1,6 @@
+<apex:page controller="testclass1" >
+<apex:form >
+<apex:inputtext value="{!name}"/> 
+<apex:commandLink value="click" action="{!click}"/>
+</apex:form>
+</apex:page>

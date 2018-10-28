@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Web tab for tip calculator flow</description>
+    <frameHeight>600</frameHeight>
+    <hasSidebar>false</hasSidebar>
+    <label>Gratuity</label>
+    <mobileReady>false</mobileReady>
+    <motif>Custom41: Stack of Cash</motif>
+    <url>https://balaji-developer-edition.my.salesforce.com/flow/Tipcalculator12/30190000000GmiSAAS</url>
+    <urlEncodingKey>UTF-8</urlEncodingKey>
+</CustomTab>

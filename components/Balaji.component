@@ -1,0 +1,12 @@
+<apex:component >
+Welcome to Balaji's website
+<apex:commandButton action="{!save}" value="Clik Me" onclick="f1()" />
+<script>
+function f1()
+{
+  alert("Hi");
+}
+</script>
+
+
+ </apex:component>

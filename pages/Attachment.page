@@ -1,0 +1,15 @@
+<apex:page standardController="Account" extensions="attcon" >
+<apex:form >
+<apex:pageblock >
+<apex:pageBlockSection >
+<apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.phone}"/>
+<apex:inputField value="{!account.fax}"/>
+<apex:inputFile value="{!body}" fileName="{!filename}"/>
+</apex:pageBlockSection>
+<apex:pageblockButtons >
+<apex:commandButton value="Save" action="{!insertfile}"/>
+</apex:pageblockButtons>
+</apex:pageblock>
+</apex:form>
+ </apex:page>

@@ -1,0 +1,6 @@
+<apex:page >
+<apex:form >
+  <c:Balaji />
+</apex:form>
+
+</apex:page>

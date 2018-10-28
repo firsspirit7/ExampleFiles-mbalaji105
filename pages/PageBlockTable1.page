@@ -1,0 +1,18 @@
+<apex:page standardController="account" recordSetVar="accounts" sidebar="false" showHeader="false">
+    <apex:panelGrid columns="2">
+        <apex:form >
+            <apex:pageBlock >
+                <apex:pageBlockTable value="{!accounts}" var="a">
+                    <apex:column headerValue="Name" >
+                        <apex:commandLink value="{!a.name}" reRender="out">
+                            <apex:param name="id" value="{!a.id}"/>
+                        </apex:commandLink>
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:pageBlock>
+        </apex:form>
+        <apex:outputPanel id="out">
+            <apex:detail subject="{!$CurrentPage.parameters.id}" relatedList="false" title="false"/> 
+        </apex:outputPanel>
+    </apex:panelGrid>
+</apex:page>

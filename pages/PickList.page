@@ -1,0 +1,17 @@
+<apex:page >
+<apex:form id="menuform">
+<apex:selectList onchange="menu_goto({'!$.component.menuform}')">
+<apex:selectOption itemLabel="Google" itemValue="http:\\www.google.com"></apex:selectOption>
+</apex:selectList>
+</apex:form>
+<script language="javascript" type="text/javascript">
+function menu_goto( menuform )
+{
+    selecteditem = menuform.newurl.selectedIndex ;
+    newurl = menuform.newurl.options[ selecteditem ].value ;
+    if (newurl.length != 0) {
+      location.href = newurl ;
+    }
+}
+</script>
+</apex:page>

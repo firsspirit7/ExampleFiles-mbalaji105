@@ -1,0 +1,13 @@
+<apex:page controller="chooseColor123">
+      <apex:form >
+        <apex:selectList id="chooseColor" value="{!str}" size="1" onchange="goto()" >
+                    <apex:selectOption itemValue="selectvalue" onmouseup="location.href='http:www.gmail.com'"></apex:selectOption>
+                    <apex:selectOption itemValue="http://www.google.com" itemLabel="Google"/>
+            <apex:selectOption itemValue="http://www.yahoo.com" itemLabel="Yahoo"/>
+            <apex:selectOption itemValue="http://www.salesforce.com" itemLabel="Salesforce"/>
+        </apex:selectList> 
+      <!--  <apex:commandButton value="Link" action="{!goto}"/> -->
+        <apex:actionFunction name="goto" action="{!goto}" />
+       <!--<apex:commandButton value="clickme" onmouseover="location.href='http://www.google.com'"/>-->
+    </apex:form>
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page controller="checkCustomSettingsController" >
+
+    <apex:pageblock >
+        <apex:pageblockTable value="{!lst}" var="record">
+            <apex:column value="{!record.Name}" />
+            <apex:column value="{!record.Fax}" />
+            <apex:column value="{!record.Type}" />
+
+        </apex:pageblockTable>
+    </apex:pageblock>
+
+
+</apex:page>

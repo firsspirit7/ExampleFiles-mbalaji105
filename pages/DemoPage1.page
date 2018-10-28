@@ -1,0 +1,36 @@
+<apex:page controller="Demo" tabStyle="Department__c">
+    <apex:form >
+        <apex:pageBlock title="Employee Details">
+        <!-- code for first picklist -->
+            <apex:outputLabel value="Department Name :"/>
+            <apex:selectList value="{!Dept}" size="1">
+                <apex:selectoptions value="{!deptName}" />
+                
+                <apex:actionsupport event="onchange" rerender="EmpList"/>
+            </apex:selectList>
+            
+         <!-- code for second picklist -->
+             <apex:outputLabel value="Employees"/>
+             <apex:selectList value="{!Emps}" size="1" disabled="{!ISNULL(Dept)}" id="EmpList" rendered="{!renderEmp}" onchange="acnFun()">
+                 <apex:selectoptions value="{!EmpName}" />
+             </apex:selectList> 
+            
+         </apex:pageBlock>      
+         <apex:actionFunction name="acnFun" action="{!get}" reRender="OpPanel2" status="AcnStatus"/>
+       <!--  <apex:commandButton value="Get Emp Details" action="{!get}" reRender="OpPanel2" status="AcnStatus"/> <br/><br/> -->
+         
+         <apex:outputPanel id="OpPanel2">
+             <apex:actionstatus id="AcnStatus" starttext="Please Wait...Loading...">
+                 <apex:facet name="stop">
+                     <apex:outputPanel rendered="{!status}">           
+                    
+                            <apex:sectionHeader title="Employee Details" subtitle="Emp Details"/>                          
+                           <apex:detail subject="{!eid}" relatedListHover="true" relatedList="true" showChatter="true"/>
+                         
+                     </apex:outputPanel>            
+                 </apex:facet>
+             </apex:actionstatus>
+         </apex:outputPanel>
+    
+    </apex:form>
+</apex:page>

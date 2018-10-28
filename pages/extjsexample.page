@@ -1,0 +1,54 @@
+<apex:page showHeader="false" standardStylesheets="false"  >
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+    <script type="text/javascript">
+      Ext.onReady(function () {
+    var chart;
+    var store1 = new Ext.data.SimpleStore({
+        fields: ['id', 'genre'],
+        data : [['1','Comedy'],['2','Drama'],['3','Action']]
+});
+
+    Ext.get('reloadData').on('click', function() {
+        store1.loadData(generateData());
+    });
+    
+    chart = new Ext.chart.Chart({
+        width: 800,
+        height: 600,
+        animate: true,
+        store: store1,
+        renderTo:'mydiv',
+        shadow: true,
+        axes: [{
+            type: 'Numeric',
+            position: 'left',
+            fields: ['data1'],
+            label: {
+                renderer: Ext.util.Format.numberRenderer('0,0')
+            },
+            title: 'Number of Hits',
+            grid: true,
+            minimum: 0
+        }, {
+            type: 'Category',
+            position: 'bottom',
+            fields: ['name'],
+            title: 'Month of the Year'
+        }],
+        series: [{
+            type: 'column',
+            axis: 'bottom',
+            highlight: true,
+            xField: 'name',
+            yField: 'data1'
+        }]
+    });
+});  
+
+    </script>
+    <body>
+    <div id="mydiv"></div>
+    </body>
+</apex:page>

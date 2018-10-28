@@ -1,0 +1,28 @@
+<apex:page controller="apformcontroller" id="pg">
+    <apex:form id="fm">
+   
+    <table align="center" id="tab">
+    <tr><td>
+    Name </td><td id="b"> <apex:inputtext value="{!afObj.Name}" id="name" /></td>
+    </tr>
+    <tr>
+    <td>
+    Email </td><td> <apex:inputtext value="{!afObj.Email__c}"/></td></tr>
+    <tr><td>
+    Location </td><td> <apex:inputText value="{!afObj.Location__c}"/></td></tr>
+    <tr><td>Mobile No</td><td> <apex:inputtext value="{!afObj.MobileNumber__c}"/></td></tr>
+    <tr><td>Color </td><td> <apex:inputfield value="{!afObj.Color__c}"/></td></tr>
+    <tr><td colspan="2" align="center">
+   
+    <apex:commandButton value="SAVE" action="{!save}" oncomplete="test();"/></td></tr>
+    
+    </table>
+    <apex:actionFunction name="test" action="{!sendPdf}"/>
+   
+    </apex:form>
+    <script>
+    function fun(){
+    document.getElementById('pg:fm:name').value='';
+    }
+    </script>
+</apex:page>

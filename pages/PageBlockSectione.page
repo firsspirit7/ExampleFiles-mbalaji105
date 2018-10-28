@@ -1,0 +1,31 @@
+<apex:page id="pg" standardController="account" >
+  <apex:form id="f1">
+  <apex:pageBlock title="ss" id="pb">
+      <apex:pageBlockSection id="pbs" columns="2">
+  <apex:inputField value="{!account.name}" id="name"/>
+  <apex:inputField value="{!account.accountnumber}" id="number"/>
+  <apex:inputField value="{!account.phone}" id="phone"/>
+
+  <script>
+          var x = document.getElementById('pg:f1:pb:pbs:name');
+          var y = document.getElementById('pg:f1:pb:pbs:number');
+          var z = document.getElementById('pg:f1:pb:pbs:phone');
+  </script>
+      </apex:pageBlockSection>
+ <apex:pageBlockButtons >
+  <apex:commandButton action="{!save}" value="save" />
+  <apex:commandButton action="{!quicksave}" value="Save&New"/>
+    <input type="button" class="btn" value="reset" onclick="clearall();"/>
+  </apex:pageBlockButtons>
+    </apex:pageBlock>
+    </apex:form>
+<script>
+function clearall()
+{
+    //alert(x);
+    x.value = '';
+    y.value = '';
+    z.value = '';
+}
+</script>
+</apex:page>

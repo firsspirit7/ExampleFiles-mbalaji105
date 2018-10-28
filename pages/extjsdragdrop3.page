@@ -1,0 +1,86 @@
+<apex:page controller="ExtJSDataGrid1Controller">
+
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+  <style>
+          
+  </style>
+ 
+ <script type="text/javascript">
+ 
+ Ext.onReady(function() {
+
+ var myData = {
+
+    records : [
+
+                 <apex:repeat value="{!myContacts}" var="con" id="ContactRepeat"> 
+                          {name:"{!con.name}",column1:"{!con.industry}",column2:"{!con.type}"},
+                 </apex:repeat>
+
+   
+            ]
+
+  };
+  var fields = [
+
+         {name: 'name', mapping : 'name'},
+    
+         {name: 'column1', mapping : 'column1'},
+    
+         {name: 'column2', mapping : 'column2'}
+    
+  ];
+ var firstGridStore = new Ext.data.JsonStore({
+
+        fields : fields,
+
+        data   : myData,
+
+        root   : 'records'
+
+    });
+
+var cols = [
+
+    { id : 'name', header: "Account Name", width: 160, sortable: true, dataIndex: 'name'},
+
+    {header: "Industry", width: 160, sortable: true,dataIndex: 'column1'},
+
+    {header: "Type", width: 160, sortable: true, dataIndex: 'column2'}
+
+  ];
+var firstGrid = new Ext.grid.GridPanel({
+
+          ddGroup        : 'secondGridDDGroup',
+
+        store            : firstGridStore,
+
+        columns          : cols,
+
+          enableDragDrop   : true,
+       
+        stripeRows       : true,
+       
+        autoExpandColumn : 'name',
+
+        width            : 650,
+        height           : 300,
+       
+
+          region           : 'west',
+            renderTo : 'Grid',
+
+        title            : 'First Grid'
+
+    });
+});
+ 
+
+  
+  
+
+</script> 
+<div id="Grid" style="backgroud-color:red;Color:green;"></div>
+</apex:page>

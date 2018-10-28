@@ -1,0 +1,6 @@
+<apex:page standardController="Account" recordSetVar="acts" sidebar="false">
+  <apex:dataTable value="{!acts}" var="a" bgcolor="yellow"  align="center">
+  <apex:column headerValue="Name" value="{!a.name}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <apex:column headerValue="Phone" value="{!a.phone}"/>
+  </apex:dataTable>
+</apex:page>

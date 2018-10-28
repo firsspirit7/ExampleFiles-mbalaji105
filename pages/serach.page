@@ -1,0 +1,12 @@
+<apex:page StandardController="account">
+
+<apex:form >
+<apex:pageBlock title="my account" mode="edit">
+<apex:pageBlockSection columns="1">
+<apex:inputField required="false" value="{!account.Name}"/>
+<apex:commandButton value="search"/>
+
+</apex:pageBlockSection></apex:pageBlock>
+
+</apex:form>  
+</apex:page>

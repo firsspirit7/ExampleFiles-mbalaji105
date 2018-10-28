@@ -1,0 +1,15 @@
+<apex:page standardController="EmployeeDetail__c"   showHeader="false" recordSetVar="balu">
+  
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockSection id="detail">
+ <apex:inputField value="{!EmployeeDetail__c.Name}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Phone__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Department__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Email__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Salary__c}"/>
+ <apex:commandButton action="{!save}"  value="Save" onclick="window.location.reload()"/>
+   </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form>
+  </apex:page>

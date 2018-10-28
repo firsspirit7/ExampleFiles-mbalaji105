@@ -1,0 +1,44 @@
+<apex:page showHeader="false" standardStylesheets="false" standardController="Account" extensions="formcls"  >
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+  <!--<apex:includeScript value="{!$Resource.Formresource}"/>-->
+ <script >
+     Ext.onReady(function() {
+      alert("hi");
+        var formPanel =  new Ext.FormPanel({
+            
+            height      : 300,
+            autoScroll  : true,
+            title       : 'form panel',
+            frame       : true,
+             
+            items       : [
+                {xtype:'textfield', fieldLabel :'{!$ObjectType.Account.fields.Name.label}', id:'nameid', value:'{!projectData.Name}'}],
+              buttons: [{
+                text: 'submit',
+                handler: function(){
+                var v1 = Ext.getCmp('nameid').getValue();
+                projectedit(v1);}
+              }]
+        });
+        
+    });
+    </script>
+    
+   
+    <apex:form >
+        <apex:actionFunction name="projectedit" action="{!save}" rerender="pageblock">
+            <apex:param name="v1" assignTo="{!projectData.Name}" value=""/>
+        </apex:actionFunction>
+    </apex:form>
+   
+        <table width="100%" align="center">
+          <tr>
+              <td width="100%" align="center" style="padding-top:100px;">
+                    <div id="mydiv"></div>
+              </td>
+          </tr>
+       </table>
+
+</apex:page>

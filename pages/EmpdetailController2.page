@@ -1,0 +1,67 @@
+<apex:page controller="TestController1" id="pg">
+<!--All pages must be wrapped inside a single page component tag.-->
+
+
+<script>
+      <!-- Here  "script" written is  used for Getting "recordId" from eachrow of  PageBlock Table  when we click on "Edit" button  Author:Balaji,Date:3/08/2011-->
+      function fun(id,name,emp,cont)
+      {
+      
+      alert(id);
+       //alert(name);
+       //alert(emp);
+       //alert(cont);
+       document.getElementById('pg:f1:pb1:ps1:id1').value=id;
+       document.getElementById('pg:f1:pb1:ps1:name').value=name;
+       document.getElementById('pg:f1:pb1:ps1:number').value=emp;
+       document.getElementById('pg:f1:pb1:ps1:country.options.add(cont)');
+       document.getElementById('pg:f1:pb1:ps1:id1').value=id;
+       document.getElementById('pg:f1:pb1:ps1:id2').value=id;
+ 
+        //alert(document.getElementById('pg:f1:pb1:ps1:id1').value);   
+       //window.open('/apex/test4?id='+id);
+      }
+</script>
+<apex:form id="f1">
+<apex:pageBlock id="pb1">
+<apex:pageBlockButtons >
+<apex:commandButton action="{!recSave}" value="save" />
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection id="ps1">
+<apex:outputLabel >Name :</apex:outputLabel>
+<apex:inputText value="{!sname}" required="true" id="name"/>
+<apex:outputLabel >No_Of_Employees :</apex:outputLabel>
+<apex:inputText value="{!inumber}" required="true" id="number"/>
+<apex:outputLabel >Country:</apex:outputLabel>
+<apex:selectList id="country" value="{!scountry}" size="1" required="true">
+            <apex:selectOption itemValue="None" itemlabel="--None--"></apex:selectOption>
+            <apex:selectOption itemValue="India" itemLabel="India"/>
+            <apex:selectOption itemValue="Usa" itemLabel="USA"/>
+            <apex:selectOption itemValue="China" itemLabel="China"/>
+</apex:selectList> 
+<apex:inputHidden value="{!sid}" id="id1"/>
+<apex:inputHidden value="{!sid1}" id="id2"/>
+<!-- <apex:outputText value="{!sid}" rendered="false"/> -->
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+<apex:pageBlock id="pb">
+<apex:pageBlockTable value="{!a}" var="ab" id="pt">
+<apex:column value="{!ab.name}"/>
+<apex:column value="{!ab.No_of_Employees__c}"/>
+<apex:column value="{!ab.Countries__c}"/>
+<apex:column value="{!ab.id}"  id="rid"/>
+<apex:column Headervalue="Action"><apex:outputLink title="" value="/{!ab.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold">Edit</apex:outputLink></apex:column>
+<apex:column >
+<apex:commandButton value="Edit1" action="{!mylst}">
+   <!--<apex:param/>-->
+</apex:commandButton>
+</apex:column>
+<apex:column Headervalue="Actiion"><apex:commandButton value="Edit" onclick="fun('{!ab.id}','{!ab.name}','{!ab.No_of_Employees__c}','{!ab.Countries__c}');"/></apex:column>
+<!--<apex:column><apex:outputLink value="/{!ab.id}" >Edit1</apex:outputLink></apex:column>-->
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

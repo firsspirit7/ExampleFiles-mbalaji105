@@ -1,0 +1,38 @@
+<apex:page Controller="mytaskcontroller"  id="pg"   sidebar="false" showHeader="false">
+<apex:form id="f1">
+
+<hr/>
+<marquee   dir="left" scroll="5"><font color="green" size="10">Employee Details</font></marquee><hr/><br/><br/><br/><br/><br/><br/>
+<center><table><apex:pageBlock id="pb">
+<apex:PageBlockSection id="ps">
+<apex:pageBlockTable value="{!dept}" var="a" id="pt"  >
+<apex:column headerValue="Name" value="{!a.Name}" id="name" />
+<apex:column headerValue="Country" value="{!a.Country__c}"/>
+<apex:column headerValue="DOB" value="{!a.Dob__c}"/>
+<apex:column headerValue="Action">            
+ <apex:outputLink value="/{!a.id}" onclick="return fun();" >ClickMe</apex:outputLink> 
+     </apex:column> 
+</apex:pageBlockTable>
+</apex:PageBlockSection>
+
+</apex:pageBlock>
+</table></center>
+</apex:form>
+<script>
+function fun()
+{
+//var a=document.getElementById('pg:f1:pb:ps:name').value;
+
+ var r=window.confirm('Do you want to navigate to detail page of this Record');
+ if(r==true)
+ alert("Now you are going to detail page");
+ else
+ {
+  alert("Are you sure to cancel to see Detail page");
+  return false;
+  //window.location.reload();
+  }   
+  }
+
+</script>
+  </apex:page>

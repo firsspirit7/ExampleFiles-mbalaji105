@@ -1,0 +1,31 @@
+<apex:page controller="Depupdatecontroller">
+<apex:form >
+<apex:pageBlock >
+<apex:pageblockSection >
+<apex:outputLabel >Name:</apex:outputLabel>
+<apex:inputText value="{!name1}"/>
+<apex:outputLabel >NoofEmployees:</apex:outputLabel>
+<apex:inputText value="{!noemp}"/>
+<apex:outputLabel >Country:</apex:outputLabel>
+<apex:selectList id="choosecountry" value="{!country}" size="1">
+<apex:selectOption itemLabel="--None--" itemValue="--None--"/>
+<apex:selectOption itemLabel="USA" itemValue="USA"/>
+<apex:selectOption itemLabel="China" itemValue="China"/>
+<apex:selectOption itemLabel="India" itemValue="India"/>
+
+</apex:selectList>
+<apex:inputHidden value="{!sid}"/>
+<apex:commandButton action="{!recsave}" value="save"/>
+</apex:pageblockSection>
+</apex:pageBlock>
+<apex:pageBlock title="DepartmentRecords">
+<apex:pageBlockTable value="{!recs}" var="r">
+<apex:column value="{!r.Name}"/>
+<apex:column value="{!r.NoofEmployees__c}"/>
+<apex:column value="{!r.Country__c}"/>
+
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

@@ -1,0 +1,93 @@
+<apex:page controller="accountdatacls231">
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+<apex:form id="fm">
+    <table border="1">
+        <tr>
+           <th>AccountName</th>
+       </tr>
+          <tr>
+            <td><apex:repeat value="{!Accounts1}"  var="a">
+                <tr>
+                  <td>
+                      <apex:commandLink value="{!a.accobj.name}" action="{!rendering}"  reRender="fm">
+                         <apex:param value="{!a.accobj.id}" name="id" assignTo="{!id}"/>
+                         <apex:param value="{!a.rowindex}" name="rowindex1" assignTo="{!rowindex1}"/>
+                     </apex:commandLink>
+                     <apex:outputText >{!a.rowindex}</apex:outputText>
+                     <div id="{!a.accobj.id}" style="display:{!a.ren}">  
+                       <script type="text/javascript">
+ 
+                             Ext.onReady(function() {
+                                var showIndividualGraph = function(firstgrid,rowIndex,e){
+                                        //var rec = grid.getStore().getAt(rowIndex);
+                                        //var columnName = grid.getColumnModel().getDataIndex(cellIndex);
+                                        Ext.MessageBox.alert('Clicked!','You Clicked row!'+rowIndex);
+                                }
+                                      
+                             var myData = {
+                            
+                                records : [
+                                            <apex:repeat value="{!lstaccount}" var="con" id="ContactRepeat"> 
+                                                <apex:repeat value="{!con.contacts}" var="con">
+                                                      {name:"{!con.name}",column1:"{!con.firstname}",column2:"{!con.lastname}"},
+                                                </apex:repeat>
+                                            </apex:repeat>
+                                        ]
+                              };
+                              var fields = [
+                            
+                                     {name: 'name', mapping : 'name'},                                
+                                     {name: 'column1', mapping : 'column1'},                                
+                                     {name: 'column2', mapping : 'column2'}                                
+                              ];
+                             var firstGridStore = new Ext.data.JsonStore({
+                            
+                                    fields : fields,                            
+                                    data   : myData,                            
+                                    root   : 'records'                            
+                                });
+                            
+                            var cols = [                            
+                                { id : 'name', header: "Contact Name", width: 160, sortable: true, dataIndex: 'name'},                            
+                                {header: "First Name", width: 160, sortable: true,dataIndex: 'column1'},                            
+                                {header: "Last Name", width: 160, sortable: true, dataIndex: 'column2'}                            
+                              ];
+                            var firstGrid = new Ext.grid.GridPanel({
+                            
+                                   ddGroup        : 'secondGridDDGroup',                            
+                                    store            : firstGridStore,                            
+                                    columns          : cols,                            
+                                    enableDragDrop   : true,                                   
+                                    stripeRows       : true,                                   
+                                    autoExpandColumn : 'name',                            
+                                    width            : 650,
+                                    height           : 300,   
+                                    region           : 'west',
+                                    renderTo : '{!a.accobj.id}',                            
+                                    title            : 'First Grid',
+                                    listeners : {
+                                            'celldblclick':showIndividualGraph ,
+                                    }
+                                    
+                            
+                                });
+                               
+
+                            });
+                                                 
+                    </script> 
+                <!-- <div  style="backgroud-color:red;Color:green;display:{!a.ren};"></div> -->
+                </div>  
+                 
+                  </td>
+                </tr>         
+               </apex:repeat>
+               
+             </td>
+          </tr>
+         
+    </table>
+ </apex:form>
+</apex:page>

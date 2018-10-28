@@ -1,0 +1,10 @@
+<apex:page controller="outputlable">
+<apex:form >
+<apex:commandButton action="{!google}" value="Google"/>
+
+ <apex:outputText value="{!$Label.balaji}">
+ <apex:param value="{!message}"/>
+ 
+ </apex:outputText>
+</apex:form>
+</apex:page>

@@ -1,0 +1,33 @@
+<apex:page controller="TestController1" id="pg">
+<apex:form id="f1">
+<apex:pageBlock >
+<apex:pageBlockButtons >
+<apex:commandButton action="{!recSave}" value="save"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection >
+<apex:outputLabel >Name :</apex:outputLabel>
+<apex:inputText value="{!sname}" required="true"/>
+<apex:outputLabel >No_Of_Employees :</apex:outputLabel>
+<apex:inputText value="{!inumber}" required="true"/>
+<apex:outputLabel >Country:</apex:outputLabel>
+<apex:selectList id="chooseColor" value="{!scountry}" size="1" required="true">
+            <apex:selectOption itemValue="none" itemlabel="--None--"></apex:selectOption>
+            <apex:selectOption itemValue="india" itemLabel="India"/>
+            <apex:selectOption itemValue="usa" itemLabel="USA"/>
+            <apex:selectOption itemValue="china" itemLabel="China"/>
+</apex:selectList> 
+</apex:pageBlockSection>
+</apex:pageBlock>
+
+<apex:pageBlock id="pb1">
+<apex:pageBlockTable value="{!a}" var="ab" id="pt">
+<apex:column value="{!ab.name}"/>
+<apex:column value="{!ab.No_of_Employees__c}"/>
+<apex:column value="{!ab.Countries__c}"/>
+<apex:column value="{!ab.id}" rendered="true" id="rid"/>
+<apex:column Headervalue="Action"><apex:commandButton value="edit" onclick="getRecordid(document.getElementById('pg:f1:pb1:pt:rid').value);" style="font-weight:bold"/></apex:column>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

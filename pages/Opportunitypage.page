@@ -1,0 +1,14 @@
+<apex:page controller="Opportunitycontroller">
+<apex:pageBlock >
+<apex:pageBlockTable value="{!opprecs}" var="opp">
+<apex:column value="{!opp.name}"/>
+<apex:column value="{!opp.name}"/>
+
+
+</apex:pageBlockTable>
+
+
+</apex:pageBlock>
+
+  
+</apex:page>

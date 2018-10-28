@@ -1,0 +1,19 @@
+<apex:page controller="accountcontact">
+<apex:form >
+<apex:pageBlock >
+<apex:repeat value="{!lstacc}" var="acc">
+<apex:outputField value="{!acc.name}"/>
+<apex:pageBlockTable value="{!acc.contacts}" var="ct">
+<apex:column value="{!ct.email}"/>
+<apex:column value="{!ct.lastname}"/>
+
+</apex:pageBlockTable>
+
+
+</apex:repeat>
+
+</apex:pageBlock>
+
+</apex:form>
+ 
+</apex:page>

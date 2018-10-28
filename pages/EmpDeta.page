@@ -1,0 +1,37 @@
+<apex:page standardController="EmployeeDetail__c" recordSetvar="emp" showHeader="false">
+  
+  <!--An area of a page that uses styling similar to the appearance of a Salesforce detail page, but without any default content.-->
+
+
+  <apex:form >
+  <apex:pageBlock title="EmployeDetail">
+  <apex:pageBlockSection id="detail" >
+ <apex:inputField value="{!EmployeeDetail__c.Name}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Phone__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Department__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Email__c}"/>
+ <apex:inputField value="{!EmployeeDetail__c.Salary__c}"/>
+ <!--component respects the attributes of the associated field, including whether the field is required or unique, and the user interface widget to display to get input from the user.-->
+ <apex:commandButton action="{!quicksave}"  value="save" oncomplete="window.location.reload();"/>
+ <!-- The button executes an action defined by a controller, and then either refreshes the current page, or navigates to a different page based on the PageReference variable that is returned by the action.-->
+   </apex:pageBlockSection>
+   <apex:pageBlockSection id="tab"> 
+ <apex:pageBlockTable value="{!emp}" var="e">   
+   <apex:column >       
+   <apex:outputLink title="" value="/{!e.id}/e?retURL=/apex/{!$CurrentPage.Name}" style="font-weight:bold" >Edit</apex:outputLink>&nbsp;|&nbsp;       
+   <!--The About retUrl redirect to insert page of EmployeeDetail__c-->
+     </apex:column>
+   <apex:column value="{!e.Name}"/>     
+   <apex:column value="{!e.Department__c}"/>    
+    <apex:column value="{!e.Email__c}"/>    
+     <apex:column value="{!e.Phone__c}"/>    
+      <apex:column value="{!e.Salary__c}"/>  
+      <!-- The merge fields specified in the value attribute of column tag used for accessing the data from EmployeeDetail__c by using RecordSetVar-->
+      
+      </apex:pageBlockTable>
+        </apex:pageBlockSection>
+         </apex:pageBlock>
+
+
+</apex:form>
+  </apex:page>

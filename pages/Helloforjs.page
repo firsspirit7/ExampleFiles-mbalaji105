@@ -1,0 +1,80 @@
+<apex:page standardStylesheets="false" sidebar="false" id="mypage" showHeader="false" standardController="account" recordSetVar="acc"  >
+  <!-- Begin Default Content REMOVE THIS -->
+ <!-- <apex:stylesheet value="{!$Resource.customcss}"/> -->
+ <style>
+ @page
+  {
+       size:horizontal;
+       font-color:red;
+       @bottom-right {
+      content: "Page " counter(page);
+    }
+  }
+ body{
+       background-color:yellow;
+       background-image:url({!URLFOR($Resource.imageurl)});
+       bgproperties:fixed;
+       background-repeat: no-repeat;
+       font-size:11pt;
+       font-family:Tahoma;
+ }
+ .table{
+  background-color:red;
+ }
+ </style>
+
+  
+ 
+ <apex:outputText value="{!NOW() - $System.OriginDateTime}">The Number of days that have been passed from 1900:</apex:outputText><br/>
+ <apex:outputtext value="{!$Site.AnalyticsTrackingCode}">SiteName:</apex:outputtext><br/>
+ <apex:outputLink value="{!$Page.EmpdetailController2}">
+EmpdetailController
+  </apex:outputLink>
+ <apex:outputtext value="{!$ObjectType.Account.Fields.industry.type}" ></apex:outputtext><br/>
+  <apex:outputtext value="{!$ObjectType.Account.Fields.name}" ></apex:outputtext><br/>
+    <apex:outputtext value="{!$Profile.Name}" >(ProfileName)</apex:outputtext><br/>
+    <apex:outputtext value="{!$Profile.Id}" >ProfileId:</apex:outputtext><br/> 
+  
+  <apex:outputtext value="{!$Organization.Name}"></apex:outputtext><br/>
+  <apex:outputtext value="{!$Organization.State}"></apex:outputtext><br/>
+  <apex:outputtext value="{!$Organization.Street}"></apex:outputtext>
+ <apex:stylesheet value="{!URLFOR($Resource.customcsszip,'kk.css')}"/>
+  <h1>Congratulations</h1>
+  This is your new Page
+  <apex:outputtext id="op">charan</apex:outputtext>
+  <apex:outputText ></apex:outputText>
+     <apex:outputText styleClass="italicText" value="This is kind of fancy." />
+  <!--<apex:includeScript value="{!URLFOR($Resource.customcsszip,'Hi.js')}"/>-->
+ <apex:includeScript value="{!$Resource.testjs}"/>
+ <apex:includeScript value="{!$Resource.Firejs}"/>
+  <apex:form id="f1">
+  <apex:commandButton value="Popup"  onclick="fun12()" />
+
+  <apex:inputtext id="name1"/>
+  <!--<apex:includeScript value="{!$Resource.Hello}"/> -->
+<apex:pageBlock title="My Content" rendered="{!$User.UITheme == 'Theme2'}">
+           // this is the old theme...
+        </apex:pageBlock>
+  <apex:pageBlock id="pb" >
+ 
+  <apex:pageBlockTable value="{!acc}" var="a" border="2" styleClass="table" id="pt">
+  <apex:column value="{!a.name}" id="name"/>
+  <apex:column headerValue="action">
+  <apex:commandButton value="clickme" onclick="fun1('{!a.name}');"/>
+  </apex:column>
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  <apex:outputLink value="{!URLFOR($Action.Account.New)}">NewAccount</apex:outputLink>
+  </apex:form>
+ <apex:image url="{!$Resource.imageurl}"/>
+ <script>
+  
+function fun12()
+{
+window.alert('/apex/newpage');
+window.showModalDialog('/apex/newpage');
+}
+ 
+ </script>
+
+</apex:page>

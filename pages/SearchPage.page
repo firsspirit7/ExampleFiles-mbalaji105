@@ -1,0 +1,38 @@
+<apex:page standardController="SearchObject__c" extensions="acccon2" showHeader="false" >
+ 
+ <apex:toolbar >
+ <apex:toolbarGroup itemSeparator="line" > 
+ <apex:outputLink value="http://mail.appshark.com" target="_blank" ><font color="white"  >AppsharkMail</font></apex:outputLink>
+  <apex:outputLink value="http://www.gmail.com" target="_blank"><font color="white">Gmail</font></apex:outputLink>
+  <apex:outputLink value="http://www.linkedin.com" target="_blank"><font color="white">LinkedIn</font></apex:outputLink>
+  <apex:outputLink value="http://www.mypptsearch.com" target="_blank"><font color="white">MypptSearch</font></apex:outputLink>
+   <apex:outputLink value="http://wiki.developerforce.com" target="_blank"><font color="white">WikiDeveloperforce</font></apex:outputLink>
+    <apex:outputLink value="http://login.salesforce.com" target="_blank"><font color="white">SalesForcelogin</font></apex:outputLink>
+  </apex:toolbarGroup>
+  </apex:toolbar>
+ 
+ 
+ 
+ 
+ <apex:form >
+ <apex:pageBlock title="Search the following Things Here Itself" >
+ <apex:pageBlockTable value="{!lstaccounts}" var="acc">
+ 
+ <apex:column >
+ <apex:commandLink value="{!acc.name}" action="{!ref}">
+ <apex:param value="{!acc.Id}" name="accid" assignTo="{!accid}" />
+ </apex:commandLink>
+ </apex:column>
+ <apex:column HeaderValue="Clickon Search Google">
+ <apex:outputLink value="http://google.com/search" target="_blank">
+
+        Search Google
+
+        <apex:param name="q" value="{!acc.name}"/>
+
+    </apex:outputLink>
+ </apex:column>
+  </apex:pageBlockTable>
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

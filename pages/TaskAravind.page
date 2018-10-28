@@ -1,0 +1,44 @@
+<apex:page controller="oppDetailClass" id="pg">
+
+<apex:form id="f1">
+  <apex:pageBlock id="pb">
+     <apex:pageBlockSection title="Enter Opportunity Details" id="pbs">
+        <apex:inputField value="{!opportunity.StartDate__c}" id="sdate" required="true"/>
+        <apex:inputField value="{!opportunity.EndDate__c}" id="edate" required="true" />
+        <apex:inputField value="{!opportunity.StageName}" id="stage"/>
+        <apex:commandButton value="Search" action="{!search}" onclick="fun();"/>
+     </apex:pageBlockSection>
+     <apex:pageBlockSection title="List of sorted opportunities">
+        
+        <apex:pageblockTable value="{!oplist}" var="opl">
+        <apex:column headerValue="Action">
+        <apex:commandLink value="RelatedList" action="{!relatedlist}">
+        <apex:param name="shid" value="{!opl.id}" assignTo="{!shid}"/>
+        </apex:commandLink>
+        </apex:column>     
+        <apex:column headerValue="Name" value="{!opl.name}"/>
+        <!--<apex:column value="{!op1.closedate}" headerValue="CloseDate"/>
+        <apex:column value="{!op1.stagename}" headerValue="StageName"/>
+        <apex:column value="{!op1.Accountid}" headerValue="Account"/>-->
+        </apex:pageblockTable>
+        
+     </apex:pageBlockSection>
+  </apex:pageBlock>
+</apex:form> 
+<script>
+function fun()
+{
+//alert(document.getElementById('{!$Component.sdate}').value);
+ var sdate1=document.getElementById('pg:f1:pb:pbs:sdate').value;
+ var edate1=document.getElementById('pg:f1:pb:pbs:edate').value;
+ if(edate1<=sdate1)
+ {
+    alert('Statrt date should be lessthan End Date');
+ }
+}
+</script> 
+        <apex:repeat value="{!rellst}" var="rel">
+            <apex:relatedList subject="{!rel.id}" list="OpenActivities"/>
+            <apex:relatedList subject="{!rel.id}" list="Quotes"/>
+        </apex:repeat>   
+</apex:page>

@@ -1,0 +1,12 @@
+<apex:page standardController="contact" extensions="sampledisplay">
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+   this is varun
+<apex:outputLabel value="{!strcontactname}"></apex:outputLabel>
+<apex:form >
+<apex:commandButton action="{!save}" value="Save" id="theButton"/>
+  <apex:actionFunction name="sayHello" action="{!contactname}" rerender="out" status="myStatus"/>
+
+</apex:form>
+
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page controller="MyController" >  
+
+ <apex:pageBlock title="Contacts"> 
+
+  </apex:pageBlock>  
+
+</apex:page>

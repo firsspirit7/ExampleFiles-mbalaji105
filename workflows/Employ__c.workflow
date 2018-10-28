@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <outboundMessages>
+        <fullName>Messageforinbox</fullName>
+        <apiVersion>22.0</apiVersion>
+        <endpointUrl>https://mail.google.com/mail/?hl=en&amp;shva=1#inbox</endpointUrl>
+        <fields>Email__c</fields>
+        <fields>Id</fields>
+        <fields>Phone__c</fields>
+        <includeSessionId>true</includeSessionId>
+        <integrationUser>mbalaji105@gmail.com</integrationUser>
+        <name>Messageforinbox</name>
+        <protected>false</protected>
+        <useDeadLetterQueue>false</useDeadLetterQueue>
+    </outboundMessages>
+    <rules>
+        <fullName>Workflowofmessage</fullName>
+        <actions>
+            <name>Messageforinbox</name>
+            <type>OutboundMessage</type>
+        </actions>
+        <active>true</active>
+        <criteriaItems>
+            <field>Employ__c.Name</field>
+            <operation>startsWith</operation>
+            <value>b</value>
+        </criteriaItems>
+        <triggerType>onCreateOrTriggeringUpdate</triggerType>
+    </rules>
+</Workflow>

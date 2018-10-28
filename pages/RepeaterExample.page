@@ -1,0 +1,17 @@
+<apex:page standardController="Account" recordSetVar="acts">
+<apex:pageBlock >
+<apex:outputLabel >Name</apex:outputLabel>&nbsp;&nbsp;&nbsp;&nbsp;
+
+ 
+<apex:outputLabel >Phone</apex:outputLabel>
+
+<apex:repeat value="{!acts}" var="a">
+<apex:outputText value="{!a.name}"/>&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+<apex:outputText value="{!a.phone}"></apex:outputText><br/>
+
+</apex:repeat>
+</apex:pageBlock>
+  
+</apex:page>

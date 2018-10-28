@@ -1,0 +1,62 @@
+<apex:page controller="Test4" tabStyle="Departments__c" sidebar="false" id="pg" showHeader="true" standardStylesheets="false"> 
+<script>
+      /*function clickme(id,name,num,cont)
+      {
+       alert(id);
+       alert(name);
+       alert(num);
+       alert(cont);
+       document.getElementById('pg:f1:pb:ps1:hid').value=id;
+       alert( document.getElementById('pg:f1:pb:ps1:hid').value);
+       document.getElementById('pg:f1:pb:ps1:name').value=name;
+       document.getElementbyId('pg:f1:pb:ps1:empnum').value=num;
+       document.getElementbyId('pg:f1:pb:ps1:con').value=cont;
+      }*/
+      function clickme(id)
+      {
+        document.getElementById('pg:f1:pb:ps1:hid').value=id;
+      }
+</script>
+<apex:form id="f1">
+<apex:pageBlock id="pb">
+
+<apex:pageBlockButtons location="bottom">
+<apex:commandButton action="{!recSave}" value="save"/>
+<apex:commandButton value="New" onclick="window.location.reload();"/>
+</apex:pageBlockButtons>
+
+<apex:pageBlockSection title="Department Details" id="ps1">
+
+<apex:outputLabel >Name :</apex:outputLabel><apex:inputText value="{!sname}" id="name"/>
+
+<apex:outputLabel >No_Of_Employees :</apex:outputLabel><apex:inputText value="{!inumber}" id="empnum"/>
+
+<apex:outputLabel >Country:</apex:outputLabel>
+<apex:selectList value="{!scountry}" size="1" id="con">
+            <apex:selectOption itemValue="None" itemlabel="--None--" id="fir"/>
+            <apex:selectOption itemValue="India" itemLabel="India"/>
+            <apex:selectOption itemValue="USA" itemLabel="USA"/>
+            <apex:selectOption itemValue="China" itemLabel="China"/>
+</apex:selectList> 
+<apex:inputText value="{!shid}" id="hid"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<apex:pageBlock title="Departments_List_View" id="pb2">
+<apex:pageBlockTable value="{!deplst}" var="dep" id="pbt">
+<apex:column headerValue="Action">
+<apex:commandLink action="{!mylst}" value="Edit" onclick="clickme('{!dep.id}')"/>
+</apex:column>
+<apex:column value="{!dep.name}"/>
+<apex:column value="{!dep.No_of_Employees__c}"/>
+<apex:column value="{!dep.Countries__c}"/>
+<apex:column value="{!dep.id}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+<!--<apex:outputText id="name1">{!sname}</apex:outputText>
+<apex:outputText id="emp1">{!inumber}</apex:outputText>
+<apex:outputText id="con1">{!scountry}</apex:outputText>-->
+
+</apex:form>
+
+</apex:page>

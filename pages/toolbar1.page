@@ -1,0 +1,80 @@
+<apex:page showHeader="false" rendered="true" id="pg" >
+ <body background="https://balaji-developer-edition--c.ap1.content.force.com/servlet/servlet.ImageServer?id=01590000000EvLf&oid=00D90000000YzjM&lastMod=1311578731000">
+ <apex:form id="f1">
+ <apex:toolbar id="thetoolbar" >
+ <apex:outputText >Sample Tool Bar</apex:outputText>
+ <apex:toolbarGroup id="toobargrouplinks" itemSeparator="line">
+ <apex:outputLink value="http:\\www.google.com"><font color="yellow">Google</font></apex:outputLink>
+ <apex:outputLink value="http:\\login.salesforce.com"><font color="yellow">SalesforceLogin</font></apex:outputLink>
+  <apex:outputLink value="http:\\www.developerforce.com"><font color="yellow">DeveloperNetwork</font></apex:outputLink>
+ </apex:toolbarGroup>
+ <apex:outputLabel value="Enter a word to search"/>
+ <apex:inputText id="search"/>
+  </apex:toolbar>
+ <br/>
+    <marquee dir="right" bgcolor="yellow"><font size="15" face="bold" color="green">Student Marks List</font></marquee>
+  <br/><br/><br/><br/><br/><br/>
+  
+  <table>
+    <center><table align="center" id="tab" >
+  <tr><td>
+  <apex:outputLabel ><b>Name</b></apex:outputLabel><br/></td>
+  <td><apex:inputText id="name" required="true" /></td>
+  </tr>
+  <tr><td> <apex:outputLabel ><b>Phone</b></apex:outputLabel></td>
+  <td><apex:inputText id="phone"/></td></tr>
+  
+   <tr><td><apex:outputLabel ><b>RollNo</b></apex:outputLabel></td>
+   <td><apex:inputText id="rollno"/></td>
+      </tr>
+    <tr><td><apex:outputLabel ><b>CollegeName</b></apex:outputLabel></td>
+    <td><apex:inputText id="companyname"/></td>
+    </tr>
+    <tr><td><apex:outputLabel ><b>Maths</b></apex:outputLabel></td>
+    <td><apex:inputText id="maths"/></td>
+    </tr>
+<tr><td><apex:outputLabel ><b>Physics</b></apex:outputLabel></td>
+    <td><apex:inputText id="physics"/></td>
+    </tr>
+    <tr><td><apex:outputLabel ><b>Chemistry</b></apex:outputLabel></td>
+    <td><apex:inputText id="chemistry"/></td>
+    </tr>
+<tr><td><apex:outputLabel ><b>Total</b></apex:outputLabel></td>
+    <td><apex:inputText id="total" onclick="fun();"  disabled="true"/></td>
+    </tr>
+
+
+    
+
+    <tr><td  colspan="2"><apex:commandButton action="{!save}" value="submit" onclick="fun();"/></td></tr>
+          </table></center></table>
+ </apex:form>
+ <script>
+ function fun()
+ {
+ 
+   var m=parseInt(document.getElementById("pg:f1:maths").value);
+   var p=parseInt(document.getElementById("pg:f1:physics").value);
+   var c=parseInt(document.getElementById("pg:f1:chemistry").value);
+   var total=m+p+c;
+   document.getElementById("pg:f1:total").value=total;
+ 
+    if(document.getElementById("pg:f1:phone").value=='' )
+   {
+    alert("Phone number should be enter");
+   
+   }
+   else if(document.getElementById("pg:f1:rollno").value=='')
+   {
+      alert("Roll no required");
+   }
+   else if(document.getElementById("pg:f1:companyname").value=='')
+   {
+     alert("company name required");
+   
+   }   
+   
+      }
+ </script>
+ </body>
+ </apex:page>

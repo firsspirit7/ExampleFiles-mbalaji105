@@ -1,0 +1,13 @@
+<apex:page controller="Balu1">
+<apex:form >
+<apex:commandButton value="delete" action="{!fun}" onclick="fun();"/>
+</apex:form>
+<script>
+function fun()
+{
+
+alert("all records are deleted");
+
+}
+</script>
+</apex:page>

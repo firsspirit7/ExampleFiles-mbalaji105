@@ -1,0 +1,23 @@
+<apex:page standardController="Account" recordSetVar="account" sidebar="false" title="abcc" language="in">
+
+<apex:form >
+    <apex:pageBlock title="My Content">
+
+        <apex:pageBlockTable value="{!account}" var="item" align="left" border="1px"  cellspacing="10%"  dir="LTR" frame="below" first="5" rules="row" onrowdblclick="ff();" >
+            <apex:column headerValue="Name" value="{!item.name}"/> 
+              <apex:column headerValue="phone" value="{!item.phone}"/>                                      
+
+        </apex:pageBlockTable> 
+
+    </apex:pageBlock> 
+</apex:form>
+
+<script>
+function ff()
+{
+alert("hi");
+}
+</script>
+
+
+</apex:page>

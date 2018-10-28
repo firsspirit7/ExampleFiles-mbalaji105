@@ -1,0 +1,6 @@
+<apex:page >
+    <apex:stylesheet value="http://developer.force.com/workbooks/vfdemo2.css"/>
+    <h1>My Fancy Site</h1>
+    <apex:insert name="body"/>
+    <apex:outputLink value="{!URLFOR($Action.Account.New)}"> new </apex:outputLink>
+</apex:page>

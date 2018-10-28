@@ -1,0 +1,75 @@
+<apex:page controller="ExtJSDataGrid1Controller">
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:includeScript value="{!$Resource.Rowexpandar}"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+    <script type="text/javascript">
+    Ext.onReady( function() {
+    //Ext.Msg.alert('hi');
+   
+    var data = [
+                 
+        <apex:repeat value="{!myContacts}" var="con" id="ContactRepeat">
+      { company : "{!con.name}", price : "{!con.industry}"},
+       </apex:repeat>
+    ];
+
+  
+    
+
+    var getGrid = function( data, element) {
+        var store = new Ext.data.ArrayStore({
+            fields: [
+                { name: 'company' },
+                { name: 'price'}
+               
+            ],
+            data: data
+        });
+
+        var expander = new Ext.ux.grid.RowExpander({
+            tpl              : '<div class="ux-row-expander-box"></div>',
+            actAsTree        : true,
+            treeLeafProperty : 'is_leaf',
+            listeners        : {
+                expand : function( expander, record, body, rowIndex) {
+                    getGrid( data, Ext.get( this.grid.getView().getRow( rowIndex)).child('.ux-row-expander-box'));
+                    //alert( Ext.ComponentMgr.all.length);
+                }
+            }
+        });
+
+        var grid = new Ext.grid.GridPanel({
+            store: store,
+            columns: [
+                expander,
+                { id:'company',header: 'Company', width: 160, sortable: true, dataIndex: 'company' },
+                { header: 'Price', width: 75, sortable: true, renderer: 'usMoney', dataIndex: 'price' },
+               
+            ],
+            stripeRows: true,
+            autoExpandColumn: 'company',
+            autoHeight: true,
+            border: false,
+            width: '100%',
+            stateful: true,
+            stateId: 'grid',
+            plugins: expander
+        });
+
+        element && grid.render( element);
+        return grid;
+    };
+
+    var panel = new Ext.Panel({
+        title      : "Nested Grids Example",
+        autoHeight : true,
+        items      : [getGrid(data)],
+        applyTo    : 'grid-box'
+    });
+
+});
+    
+    </script>
+    <div id="grid-box"></div>
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:page id="thePage">
+<apex:includeScript value="{!URLFOR($Resource.PO, 'jquery-1.5.1.min.js')}"/>
+        <apex:outputText value="(page) This is the page."/><br/>
+        <apex:include pageName="ballu11"/>
+        <apex:includeScript value="{!$Resource.Injs}"/>
+</apex:page>

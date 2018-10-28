@@ -1,0 +1,11 @@
+<apex:page standardController="Contact"> 
+
+    
+
+<apex:pageBlock title="Simple Title"> 
+
+    <b>Hello <i>{!$User.FirstName}</i>.</b> 
+
+  </apex:pageBlock> 
+                    
+</apex:page>

@@ -1,0 +1,53 @@
+<apex:page controller="empdetailinsert" id="pg">
+<apex:form id="f1">
+<apex:pageBlock id="pb">
+<apex:pageBlockButtons >
+<apex:commandButton action="{!recsave1}" value="save" onclick="fun();"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection id="pbs">
+<apex:outputLabel >Name</apex:outputLabel>
+<apex:inputText value="{!name1}" id="name"/>
+<apex:outputLabel >Department</apex:outputLabel>
+<apex:inputText value="{!department}"/>
+<apex:outputLabel >Phone</apex:outputLabel>
+<apex:inputText value="{!phone}"/>
+<apex:outputLabel >Email</apex:outputLabel>
+<apex:inputText value="{!email}"/>
+<apex:outputLabel >Salary</apex:outputLabel>
+<apex:inputText value="{!salary}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+<apex:pageBlock >
+<apex:pageBlockTable value="{!d}" var="e">
+<apex:column value="{!e.Name}"/>
+<apex:column value="{!e.Department__c}"/>
+<apex:column value="{!e.Phone__c}"/>
+<apex:column value="{!e.Email__c}"/>
+<apex:column value="{!e.Salary__c}"/>
+</apex:pageBlockTable>
+
+
+</apex:pageBlock>
+
+
+
+</apex:form>
+<script>
+function fun()
+{
+ var a=document.getElementById('pg:f1:pb:pbs:name').value;
+
+
+ if(a==null || a=='')
+   {
+    alert("Enter name");
+    window.location.reload();
+   }
+    
+ }
+
+</script>
+
+
+
+</apex:page>

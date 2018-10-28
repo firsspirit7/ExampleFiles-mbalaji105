@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="acc">
+<apex:pageBlock title="Hello {!$User.FirstName}!">
+You are displaying values from the  account and a separate contact
+that is specified by a query string parameter.
+</apex:pageBlock>
+<apex:pageBlock title="Contacts">
+<apex:dataTable value="{!acc}" var="t" cellPadding="4" border="1">
+<apex:column >
+<apex:facet name="header">Name</apex:facet>
+{!t.Name}
+</apex:column>
+<apex:column >
+<apex:facet name="header">Phone</apex:facet>
+{!t.Phone}
+</apex:column>
+</apex:dataTable>
+</apex:pageBlock>
+<apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" title="false"/>
+</apex:page>

@@ -1,0 +1,10 @@
+<apex:page standardController="Contact" recordSetVar="cnt">
+  <apex:pageBlock title="Test">
+    <apex:pageBlockTable value="{!cnt}" var="ct">
+    <apex:column value="{!ct.lastname}" headerValue="BirthDate"/>
+    
+    
+    </apex:pageBlockTable> 
+    </apex:pageBlock>
+  <apex:detail relatedList="false" />
+</apex:page>

@@ -1,0 +1,31 @@
+<apex:page >
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+    <script type="text/javascript">
+ Ext.onReady(function() {
+
+var myButton = new Ext.Button({
+  text    : 'hide me',
+  handler : function() {
+    myPanel.el.switchOff({
+      callback : function() {
+        myPanel.el.slideIn.defer(500, myPanel.el, []);
+      }
+    });
+  } 
+});
+
+myPanel = new Ext.Panel({
+  width    : 200,
+  height   : 100,
+  title    : 'Title me',
+  frame    : true,
+  renderTo : 'div1', 
+  items    :  myButton 
+});
+
+});
+</script> 
+<div id='div1'>asdf</div>
+</apex:page>

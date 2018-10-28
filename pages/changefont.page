@@ -1,0 +1,26 @@
+<apex:page id="thePage">
+
+<!-- The following script element contains a simple function for changing the font. -->  
+    
+<script>
+   function changeFont(input, textid,textid) {
+     if(input.checked) document.getElementById(textid).style.fontWeight = "bold";
+     else              document.getElementById(textid).style.fontWeight = "normal";
+   }
+</script>
+
+<!-- The first outputPanel calls the function, passing in the existing occurance
+     of the checkbox, as well as the DOM ID of the output component. -->  
+    
+   <apex:outputPanel layout="block">
+      <label for="checkbox">Click this box to change text font:   </label>
+      <input id="checkbox" type="checkbox"
+             onclick="changeFont(this,'{!$Component.thePanel}','{!$Component.name}');"/>
+   </apex:outputPanel>
+
+<!-- The second outputPanel contains the text that will be changed. -->  
+    
+   <apex:outputPanel id="thePanel" layout="block">Change me!
+   </apex:outputPanel>
+   <apex:outputPanel id="name">Hi this is Balaji</apex:outputPanel>
+</apex:page>

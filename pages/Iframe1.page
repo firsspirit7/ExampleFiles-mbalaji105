@@ -1,0 +1,9 @@
+<apex:page showHeader="false" >
+<!--Author:Balaji M,Date:29-7-2011-->
+  <apex:iframe src="https://balaji-developer-edition--c.ap1.visual.force.com/apex/Emppage2" height="250pts" />
+  <apex:iframe src="https://balaji-developer-edition--c.ap1.visual.force.com/apex/EmpPage1" id="frame2"/>
+
+<!--A frame allows you to keep some information visible while other information is scrolled or replaced.-->
+
+
+  </apex:page>

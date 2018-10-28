@@ -1,0 +1,28 @@
+<apex:page standardController="Account">
+<script type="text/javascript">
+function new()
+{
+ Window.location.href="https://balaji-developer-edition--c.ap1.visual.force.com/apex/input";
+}
+</script>
+<apex:form >
+<apex:pageBlock title="MyAccounts Detail"  mode="edit">
+ ><apex:pageBlockSection >
+<apex:inputField value="{!account.name}"/>
+<apex:inputField value="{!account.Phone}"/>
+</apex:pageBlockSection>
+<apex:pageBlockButtons location="top"> 
+<apex:commandButton action="{!save}" value="Save" id="theButton1" onclick="new()"/>
+<apex:commandButton action="{!cancel}" value="Cancel" id="theButton2"/>
+<apex:commandButton action="{!quicksave}" value="Save&New" id="theButton3"/> 
+</apex:pageBlockButtons>
+<apex:pageBlockButtons location="bottom"> 
+<apex:commandButton action="{!save}" value="Save" id="theButton1" onclick="new()"/>
+<apex:commandButton action="{!cancel}" value="Cancel" id="theButton2"/>
+<apex:commandButton action="{!quicksave}" value="Save&New" id="theButton3"/>
+ 
+ 
+</apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

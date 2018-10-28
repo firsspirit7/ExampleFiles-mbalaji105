@@ -1,0 +1,13 @@
+<apex:page standardController="Account" tabStyle="Account" sidebar="false" recordSetVar="acts">
+    <apex:sectionHeader title="One of Your accounts" subtitle="Exciting !"/>
+    <apex:detail subject="{!account.ownerId}" relatedList="false" title="false"/>
+    <apex:form >
+    <apex:pageBlock >
+    <apex:pageBlockTable value="{!acts}" var="a">
+    <apex:column headervalue="Name" value="{!a.name}"/>
+    <apex:column headervalue="AccountNumber" value="{!a.accountnumber}"/>
+
+        </apex:pageBlockTable>
+   </apex:pageBlock>
+    </apex:form>
+</apex:page>

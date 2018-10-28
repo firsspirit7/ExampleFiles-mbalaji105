@@ -1,0 +1,13 @@
+<apex:page standardController="Account">
+    <apex:pageBlock title="{!account.name}"/>
+    <apex:outputPanel id="detail">
+        <apex:detail subject="{!$CurrentPage.parameters.cid}"
+              relatedList="false" title="false"/>
+    </apex:outputPanel>
+    <apex:form > 
+    <apex:commandLink rerender="detail">
+    {!account.Name}
+    <apex:param name="cid" value="{!account.id}"/>
+</apex:commandLink>
+</apex:form>
+</apex:page>

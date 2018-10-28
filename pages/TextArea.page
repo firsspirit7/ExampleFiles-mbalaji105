@@ -1,0 +1,10 @@
+<apex:page standardController="Contract">
+    <apex:form id="changeDescription">
+    <apex:pageBlock >
+        <p>Current description: {!contract.description}</p>
+        <p>Change description to:</p> 
+        <apex:inputTextarea id="newDesc" value="{!contract.description}"/><p/>
+        <apex:commandButton value="Save" action="{!save}"/>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

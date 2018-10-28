@@ -1,0 +1,14 @@
+<apex:page standardController="Account" recordSetVar="acc">
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockTable value="{!acc}" var="a">
+<apex:column value="{!a.name}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+
+</apex:form>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

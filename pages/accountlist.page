@@ -1,0 +1,7 @@
+<apex:page controller="Arvind" >
+ <apex:form >
+    Name: <apex:inputtext value="{!name}" required="true"/> 
+    <apex:commandButton value="submit" action="{!submit}"/>
+ <apex:commandLink value="Submit" action="{!submit}"/>
+ </apex:form>
+</apex:page>

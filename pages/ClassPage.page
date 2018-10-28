@@ -1,0 +1,5 @@
+<apex:page controller="DemoController">
+<apex:form >
+<apex:actionFunction action="{!getRecords}" name="dd"/>
+</apex:form>
+  </apex:page>

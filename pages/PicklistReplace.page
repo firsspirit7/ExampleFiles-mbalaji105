@@ -1,0 +1,19 @@
+<apex:page standardController="Account" recordSetVar="acts">
+  <apex:form id="balu">
+  <apex:pageBlock id="pb">
+  <apex:pageBlockSection id="ps" >
+  <apex:pageBlockTable id="pd" value="{!acts}" var="a">
+  <apex:column HeaderValue="Name" value="{!a.Type}"/>
+  <apex:commandButton action="{!save}" value="save"/>
+  
+  
+  </apex:pageBlockTable>
+    
+  </apex:pageBlockSection>
+  
+  
+  </apex:pageBlock>
+  </apex:form>
+  
+  
+  </apex:page>

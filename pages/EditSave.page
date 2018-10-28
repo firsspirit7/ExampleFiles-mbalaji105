@@ -1,0 +1,32 @@
+<apex:page controller="Employ1" sidebar="false" showHeader="true" id="pg">
+
+<apex:pageBlock title="Employee List" id="pb2">
+<apex:form id="f1" >
+ <apex:outputPanel rendered="{!table1}">
+<apex:pageBlockTable value="{!emplst}" var="e">
+<apex:column headerValue="Action">
+             <apex:commandLink value="edit" action="{!edit}"/>
+         </apex:column>
+<apex:column value="{!e.Name}"/>
+<apex:column value="{!e.Email__c}"/>
+<apex:column value="{!e.Phone__c}"/>
+</apex:pageBlockTable>
+</apex:outputPanel>
+
+ <apex:outputPanel rendered="{!table2}">
+<apex:pageBlockTable value="{!emplst}" var="emp">
+<apex:column headerValue="Action">
+<apex:commandButton value="save" action="{!save}"/>
+</apex:column>
+<apex:column ><apex:inputText value="{!emp.Name}"/></apex:column>
+<apex:column ><apex:inputText value="{!emp.Email__c}"/></apex:column>
+<apex:column ><apex:inputText value="{!emp.Phone__c}"/></apex:column>
+<!--<apex:column value="{!emp.Email__c}"/>
+<apex:column value="{!emp.Phone__c}"/>-->
+  
+</apex:pageBlockTable>
+</apex:outputPanel>
+
+</apex:form>
+</apex:pageBlock>
+</apex:page>

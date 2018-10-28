@@ -1,0 +1,25 @@
+<apex:page Controller="ConUpdate"  id="thePage" showHeader="false" sidebar="false"> 
+    <apex:form id="theForm"> 
+        <apex:pageBlock id="thePageBlock"> 
+            <apex:pageBlockTable value="{!consforupdate}" var="record" id="thePageBlockTable"> 
+                <apex:column > 
+                    <apex:outputField value="{!record.Name}" id="AccountNameDOM" /> 
+                    <apex:facet name="header">Name</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Type}" id="AccountTypeDOM" /> 
+                    <apex:facet name="header">Type</apex:facet>
+                </apex:column>
+                <apex:column >
+                    <apex:outputField value="{!record.Industry}" id="AccountIndustryDOM" />  
+                        <apex:facet name="header">Industry</apex:facet>
+                </apex:column>
+                <apex:inlineEditSupport event="ondblClick" showOnEdit="saveButton,cancelButton" hideOnEdit="editButton" /> 
+            </apex:pageBlockTable> 
+            <apex:pageBlockButtons > 
+                 <apex:commandButton value="Save" action="{!updatecons}" id="saveButton"/>
+                 <apex:commandButton onclick="resetInlineEdit()" id="cancelButton" value="Cancel" reRender="thePageBlock"/>
+            </apex:pageBlockButtons> 
+        </apex:pageBlock> 
+    </apex:form>
+</apex:page>

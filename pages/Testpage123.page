@@ -1,0 +1,34 @@
+<apex:page controller="mypagecont" id="pg">
+<apex:form id="f1">
+<apex:pageBlock >
+<apex:pageBlockTable value="{!accounts}" var="a">
+<apex:column value="{!a.name}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+<apex:commandButton value="clickme" onclick="fun();"/>
+<apex:inputText value="{!name1}" id="na"/>
+<apex:outputtext id="txt">Change me!  </apex:outputtext>
+<apex:inputCheckbox id="input" onclick="changfont1();"/>
+</apex:form>
+<apex:outputPanel layout="block">  
+<label for="checkbox">Click this box to change text font: </label>  
+<input id="input1" type="checkbox" onclick="changeFont(this,'{!$Component.thePanel}');"/>  
+<apex:outputText id="txt" value="Balaji">Hi</apex:outputText>
+</apex:outputPanel>  
+  <script>
+function changeFont(input, textid) {  
+if(input.checked) document.getElementById(textid).style.fontWeight = "bold";  
+else document.getElementById(textid).style.fontWeight = "normal";  
+}  
+fuction changeFont()
+{
+ if(input1)
+ document.getElementByid('{!$Component.f1.txt}').value=balue;
+}
+function fun()
+{
+alert(document.getElementById('{!$Component.f1.na}').value);
+}
+</script>
+
+</apex:page>

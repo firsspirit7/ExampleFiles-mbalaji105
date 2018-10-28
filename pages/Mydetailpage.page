@@ -1,0 +1,20 @@
+<apex:page standardController="Account" recordSetVar="accs" sidebar="false" extensions="accountdetail"> 
+ <apex:form >
+ <apex:pageBlock title="Account">
+ <apex:outputpanel rendered="{!detail}"> 
+  <apex:pageBlockTable value="{!accs}" var="acc" >  
+   <apex:column headerValue="Account Name" >  
+   <apex:commandLink action="{!detail}" value="{!acc.Name}" >    
+    <apex:param name="cid" value="{!acc.id}"/>  
+      </apex:commandLink>  
+       </apex:column>   
+        </apex:pageBlockTable>   
+        </apex:outputpanel>  
+         </apex:pageBlock>    
+        <apex:outputPanel id="detail"  rendered="{!detail1}">    
+         <apex:detail subject="{!$CurrentPage.parameters.cid}" relatedList="false" title="false"/>  
+         <apex:commandButton value="Previous"/> 
+         <apex:commandButton value="Next"/>   
+              </apex:outputPanel>
+               </apex:form>    
+                </apex:page>

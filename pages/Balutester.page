@@ -1,0 +1,30 @@
+<apex:page controller="CommandButtonApexParam" id="pgId">
+<script>
+    function setHidden()
+    {
+        var hiddenRep = document.getElementById('pgId:frmId:pgBlockId:hdnRep2');
+        hiddenRep.value = document.getElementById('rep2').value;
+    }
+</script>
+<apex:form id="frmId">
+<apex:pageMessages id="pgMsg"></apex:pageMessages>
+<apex:pageBlock id="pgBlockId">
+
+   <div class="ui-widget">
+    <label for="rep2"><b>Reassign to: </b></label>
+    <input id="rep2"/>
+   </div>
+
+    <apex:inputHidden id="hdnRep2" value="{!rep2}"/>    
+    <apex:pageBlockButtons >
+        <apex:commandButton action="{!updateLeadOwner}" onclick="setHidden();" value="Save" rerender="pgMsg,leadtoupdatetable">        
+        </apex:commandButton>
+        
+        
+        
+        
+       </apex:pageBlockButtons>
+      </apex:pageBlock>
+
+</apex:form>
+</apex:page>

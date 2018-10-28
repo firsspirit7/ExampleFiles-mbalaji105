@@ -1,0 +1,12 @@
+<apex:page >
+  SFConnectionController controller = new SFConnectionController();
+  LoginResult loginResult = controller.login(username, password, securityToken);
+ Response response = controller.query('select Name, Email, Phone, MailingCity, MailingCountry from Contact', loginResult);
+ for(Record row: response.data.records){
+    string Name = row.getFieldValue('Name');
+    string Email = row.getFieldValue('Email');
+    string Phone = row.getFieldValue('Phone');
+      string MailingCity = row.getFieldValue('MailingCity');
+      string MailingCountry = row.getFieldValue('MailingCountry');
+ }
+</apex:page>

@@ -1,0 +1,17 @@
+<apex:page controller="picklistdescribe">
+<apex:form >
+ <apex:selectList id="industry" value="{!industry1}" size="1" required="true">
+  <apex:selectOptions value="{!Industry}"/>
+</apex:selectList>
+<apex:SelectList value="{!val}" size="1">
+
+      <apex:selectOptions value="{!Name}"></apex:selectOptions>
+
+    </apex:SelectList>
+    <apex:SelectList value="{!val}" size="1">
+
+      <apex:selectOptions value="{!Name}"></apex:selectOptions>
+
+    </apex:SelectList>
+</apex:form>
+</apex:page>

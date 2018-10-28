@@ -1,0 +1,5 @@
+<apex:page >
+<apex:form >
+  <apex:commandButton value="balu"/>
+  </apex:form>
+</apex:page>

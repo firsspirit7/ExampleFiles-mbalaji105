@@ -1,0 +1,7 @@
+<apex:page controller="pageredirect">
+  <apex:form >
+  <apex:commandLink action="{!submit}" value="submit"/>  
+  </apex:form>
+  
+  
+  </apex:page>

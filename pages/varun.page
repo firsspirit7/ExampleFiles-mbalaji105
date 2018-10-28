@@ -1,0 +1,10 @@
+<apex:page standardController="Account" recordSetVar="acts">
+<apex:pageBlock title="Contacts">
+<apex:image id="theImage" value="https://balaji-developer-edition--c.ap1.content.force.com/servlet/servlet.ImageServer?id=01590000000Ete6&oid=00D90000000YzjM&lastMod=1311145733000" width="250" height="155"/>
+<apex:pageBlockTable value="{!acts}" var="contact">
+<apex:column value="{!contact.Name}"/>
+<apex:column value="{!contact.accountnumber}"/>
+<apex:column value="{!contact.Phone}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:page>

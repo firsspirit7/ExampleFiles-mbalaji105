@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fieldUpdates>
+        <fullName>TravelsRule1</fullName>
+        <field>PriceCharge__c</field>
+        <formula>AkshayaTravels__r.Price__c</formula>
+        <name>TravelsRule1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+    </fieldUpdates>
+    <fieldUpdates>
+        <fullName>TravelsRule1</fullName>
+        <field>Price__c</field>
+        <formula>AkshayaTravels__r.Price__c</formula>
+        <name>TravelsRule1</name>
+        <notifyAssignee>false</notifyAssignee>
+        <operation>Formula</operation>
+        <protected>false</protected>
+        <targetObject>AkshayaTravels__c</targetObject>
+    </fieldUpdates>
+    <rules>
+        <fullName>TravelsRule</fullName>
+        <actions>
+            <name>TravelsRule1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <actions>
+            <name>TravelsRule1</name>
+            <type>FieldUpdate</type>
+        </actions>
+        <active>true</active>
+        <formula>true</formula>
+        <triggerType>onAllChanges</triggerType>
+    </rules>
+</Workflow>

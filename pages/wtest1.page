@@ -1,0 +1,35 @@
+<apex:page controller="wrapperClassController125" id="pg">
+    <apex:form id="f1">
+        <apex:pageBlock id="pb">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Delete" action="{!del}" onclick="fun();"/>
+                <apex:commandButton value="insert" action="{!insert1}"/>
+            </apex:pageBlockButtons>
+            <!-- In our table we are displaying the cContact records -->
+            <apex:pageBlockTable value="{!contacts}" var="c" id="pt" >
+                <apex:column headerValue="Action" >
+                    <!-- This is our selected Boolean property in our wrapper class -->
+                    <apex:inputCheckbox value="{!c.selected}" id="check"/>
+                </apex:column>
+                <!-- This is how we access the contact values within our cContact container/wrapper -->
+                <apex:column value="{!c.con.Name}" />
+
+
+             </apex:pageBlockTable>
+             </apex:pageBlock>
+             <script>
+             function fun()
+             {
+              alert("plz select a record");
+              var a=document.getElementById('pg:pb:check').value;
+              if(a.checked==true)
+              alert("R you sure to delete");
+              //alert(a);
+             
+             }
+             
+             </script>
+             
+             
+             </apex:form>
+             </apex:page>

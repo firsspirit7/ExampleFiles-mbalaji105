@@ -1,0 +1,20 @@
+<apex:page standardController="Case" recordSetVar="cases" tabstyle="case" sidebar="false" showHeader="false">
+    <apex:iframe src="https://www.salesforce.com" scrolling="true" id="theIframe" frameborder="false" rendered="true" title="Hi Balaji welcome to salesforce" width="100%" height="250"/>
+        <apex:form id="changeStatusForm">
+        <apex:pageBlock >
+        <apex:pageMessages />
+        <apex:pageBlockButtons >
+            <apex:commandButton value="Save" action="{!save}"/>
+        </apex:pageBlockButtons>
+        <apex:pageBlockTable value="{!cases}" var="c">
+            <apex:column value="{!c.casenumber}"/>
+            <apex:column value="{!c.account.name}"/>
+            <apex:column value="{!c.contact.name}"/>
+            <apex:column value="{!c.subject}"/>
+            <apex:column headerValue="Status">
+                <apex:inputField value="{!c.Status}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

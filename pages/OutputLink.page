@@ -1,0 +1,8 @@
+<apex:page >
+<Table>
+<tr><td>
+<apex:outputLink value="http://www.google.com">Google</apex:outputLink></td><td>
+<apex:outputLink value="http://mail.appshark.com">Appshark</apex:outputLink></td></tr>
+
+</Table>
+</apex:page>

@@ -1,0 +1,327 @@
+<apex:page showHeader="false" standardStylesheets="false"  standardController="contact" recordSetVar="myContacts">
+
+  <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/adapter/ext/ext-base.js"/>
+    <apex:includeScript value="{!$Resource.Extjs4Vf}/ext-3.0.0/ext-all.js"/>
+    <apex:stylesheet value="{!$Resource.Extjs4Vf}/ext-3.0.0/resources/css/ext-all.css"/>
+ 
+ <script type="text/javascript">
+ 
+ Ext.onReady(function() {
+
+
+
+
+
+    var myData = {
+
+    records : [
+       <apex:repeat value="{!myContacts}" var="con" id="ContactRepeat">
+      { lastname : "{!con.lastname}", firstname : "{!con.firstname}", fax : "{!con.fax}" },
+       </apex:repeat>
+      ]
+
+
+  };
+
+
+
+
+  // Generic fields array to use in both store defs.
+
+  var fields = [
+
+     {name: 'lastname', mapping : 'lastname'},
+
+     {name: 'firstname', mapping : 'firstname'},
+
+     {name: 'fax', mapping : 'fax'}
+
+  ];
+
+
+
+    // create the data store
+
+    var firstGridStore = new Ext.data.JsonStore({
+
+        fields : fields,
+
+    data   : myData,
+
+    root   : 'records'
+
+    });
+
+
+
+
+
+  // Column Model shortcut array
+
+  var cols = [
+
+    { id : 'lastname', header: "LastName", width: 170, sortable: true, dataIndex: 'lastname'},
+
+    {header: "FirstName", width: 160, sortable: true, dataIndex: 'firstname'},
+
+    {header: "Fax", width: 160, sortable: true, dataIndex: 'fax'}
+
+  ];
+
+
+
+  // declare the source Grid
+
+    var firstGrid = new Ext.grid.GridPanel({
+
+  ddGroup          : 'secondGridDDGroup',
+
+        store            : firstGridStore,
+
+        columns          : cols,
+
+  enableDragDrop   : true,
+
+        stripeRows       : true,
+
+        autoExpandColumn : 'lastname',
+
+        width            : 325,
+
+        region           : 'west',
+
+        title            : 'First Grid'
+
+    });
+
+
+
+    var secondGridStore = new Ext.data.JsonStore({
+
+        fields : fields,
+
+    root   : 'records'
+
+    });
+
+
+
+    // create the destination Grid
+
+    var secondGrid = new Ext.grid.GridPanel({
+
+  ddGroup          : 'firstGridDDGroup',
+
+        store            : secondGridStore,
+
+        columns          : cols,
+
+  enableDragDrop   : true,
+
+        stripeRows       : true,
+
+        autoExpandColumn : 'lastname',
+
+        width            : 325,
+
+  region           : 'center',
+
+        title            : 'Second Grid'
+
+    });
+
+
+
+
+
+  //Simple 'border layout' panel to house both grids
+
+  var displayPanel = new Ext.Panel({
+
+    width    : 600,
+
+    height   : 500,
+
+    layout   : 'border',
+    
+    align    :'stretchMax',
+    autoScroll:true,
+    autoWidth:true,
+
+    renderTo : 'panel',
+
+    items    : [
+
+      firstGrid,
+
+      secondGrid
+
+    ],
+
+    bbar    : [
+
+      '->', // Fill
+
+      {
+
+        text    : 'Reset both grids',
+
+        handler : function() {
+
+          //refresh source grid
+
+          firstGridStore.loadData(myData);
+
+
+
+          //purge destination grid
+
+          secondGridStore.removeAll();
+
+        }
+
+      }
+
+    ]
+
+  });
+
+
+
+  // used to add records to the destination stores
+
+  var blankRecord =  Ext.data.Record.create(fields);
+
+
+
+  /****
+
+  * Setup Drop Targets
+
+  ***/
+
+  // This will make sure we only drop to the view container
+
+  var firstGridDropTargetEl =  firstGrid.getView().el.dom.childNodes[0].childNodes[1];
+
+  var firstGridDropTarget = new Ext.dd.DropTarget(firstGridDropTargetEl, {
+
+    ddGroup    : 'firstGridDDGroup',
+
+    copy       : true,
+
+    notifyDrop : function(ddSource, e, data){
+
+
+
+      // Generic function to add records.
+
+      function addRow(record, index, allItems) {
+
+
+
+        // Search for duplicates
+
+        var foundItem = firstGridStore.findExact('lastname', record.data.lastname);
+
+        // if not found
+
+        if (foundItem  == -1) {
+
+          firstGridStore.add(record);
+
+
+
+          // Call a sort dynamically
+
+          firstGridStore.sort('lastname', 'ASC');
+
+
+
+          //Remove Record from the source
+
+          ddSource.grid.store.remove(record);
+
+        }
+
+      }
+
+
+
+      // Loop through the selections
+
+      Ext.each(ddSource.dragData.selections ,addRow);
+
+      return(true);
+
+    }
+
+  });
+
+
+
+
+
+  // This will make sure we only drop to the view container
+
+  var secondGridDropTargetEl = secondGrid.getView().el.dom.childNodes[0].childNodes[1]
+
+
+
+  var destGridDropTarget = new Ext.dd.DropTarget(secondGridDropTargetEl, {
+
+    ddGroup    : 'secondGridDDGroup',
+
+    copy       : false,
+
+    notifyDrop : function(ddSource, e, data){
+
+
+
+      // Generic function to add records.
+
+      function addRow(record, index, allItems) {
+
+
+
+        // Search for duplicates
+
+        var foundItem = secondGridStore.findExact('lastname', record.data.lastname);
+
+        // if not found
+
+        if (foundItem  == -1) {
+
+          secondGridStore.add(record);
+
+          // Call a sort dynamically
+
+          secondGridStore.sort('lastname', 'ASC');
+
+
+
+          //Remove Record from the source
+
+          ddSource.grid.store.remove(record);
+
+        }
+
+      }
+
+      // Loop through the selections
+
+      Ext.each(ddSource.dragData.selections ,addRow);
+
+      return(true);
+
+    }
+
+  });
+
+});
+
+</script> 
+<div id="panel"></div>
+
+
+</apex:page>

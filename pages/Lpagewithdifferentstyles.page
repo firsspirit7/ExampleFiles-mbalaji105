@@ -1,0 +1,292 @@
+<apex:page showHeader="false" controller="Displaydifferentcomponents">
+        <style type="text/css">
+
+.spotlightmenu{
+width: 100%;
+overflow:hidden;
+}
+
+.spotlightmenu ul{
+margin: 0;
+padding: 0;
+font: bold 14px Verdana; /* font style and size */
+list-style-type: none;
+text-align: center; /* "left", "center", or "right" align menu */
+}
+
+.spotlightmenu li{
+display: inline-block;
+position:relative;
+padding: 5px;
+margin: 0;
+margin-right: 5px; /* right margin between menu items */
+}
+
+
+.spotlightmenu li a{
+display:inline-block;
+padding: 5px;
+min-width:50px; /* horizontal diameter of spotlight */
+height:50px; /* vertical diameter of spotlight */
+text-decoration: none;
+color: black;
+margin: 0 auto;
+overflow:hidden;
+-moz-transition: all 0.5s ease-in-out; /* CSS3 transition to animate all A properties */
+-webkit-transition: all 0.3s ease-in-out;
+-o-transition: all 0.3s ease-in-out;
+-moz-transition: all 0.3s ease-in-out;
+-ms-transition: all 0.3s ease-in-out;
+transition: all 0.3s ease-in-out;
+}
+
+.spotlightmenu li:hover a{
+color: white;
+background: green; /* background color of spotlight */
+-webkit-border-radius: 50%; /* large radius to create circular borders */
+-moz-border-radius: 50%;
+border-radius: 50%;
+}
+
+.spotlightmenu li a span{
+position:relative;
+top:35%; /* move text down so it appears centered within menu item */
+}
+
+.example1 a:hover{
+    text-decoration:none;
+    color:darkblue; 
+    font-weight:bold;
+}
+.site_lnks a:hover, a:slct_tab {
+        background:#8ab64e;
+        color:#fff;
+    }
+
+</style>
+<style>
+
+.imagepluscontainer{ /* main image container */
+position: relative;
+z-index: 1;
+}
+
+.imagepluscontainer img{ /* CSS for image within container */
+position: relative;
+z-index: 2;
+-moz-transition: all 0.5s ease; /* Enable CSS3 transition on all props */
+-webkit-transition: all 0.5s ease-in-out;
+-o-transition: all 0.5s ease-in-out;
+-ms-transition: all 0.5s ease-in-out;
+transition: all 0.5s ease-in-out;
+}
+
+.imagepluscontainer:hover img{ /* CSS for image when mouse hovers over main container */
+-moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+-moz-transform: scale(1.05, 1.05);
+-webkit-transform: scale(1.05, 1.05);
+-ms-transform: scale(1.05, 1.05);
+-o-transform: scale(1.05, 1.05);
+transform: scale(1.05, 1.05);
+}
+
+.imagepluscontainer div.desc{ /* CSS for desc div of each image. */
+position: absolute;
+width: 90%;
+z-index: 1; /* Set z-index to that less than image's, so it's hidden beneath it */
+bottom: 0; /* Default position of desc div is bottom of container, setting it up to slide down */
+left: 5px;
+padding: 8px;
+background: rgba(0, 0, 0, 0.8); /* black bg with 80% opacity */
+color: white;
+-moz-border-radius: 0 0 8px 8px; /* CSS3 rounded borders */
+-webkit-border-radius: 0 0 8px 8px;
+border-radius: 0 0 8px 8px;
+opacity: 0; /* Set initial opacity to 0 */
+-moz-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8); /* CSS3 shadows */
+-webkit-box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+box-shadow: 0 0 6px rgba(0, 0, 0, 0.8);
+-moz-transition: all 0.5s ease 0.5s; /* Enable CSS3 transition on desc div. Final 0.5s value is the delay before animation starts */
+-webkit-transition: all 0.5s ease 0.5s;
+-o-transition: all 0.5s ease 0.5s;
+-ms-transition: all 0.5s ease 0.5s;
+transition: all 0.5s ease 0.5s;
+}
+
+.imagepluscontainer div.desc a{
+color: white;
+}
+
+.imagepluscontainer:hover div.desc{ /* CSS for desc div when mouse hovers over main container */
+-moz-transform: translate(0, 100%);
+-webkit-transform: translate(0, 100%);
+-ms-transform: translate(0, 100%);
+-o-transform: translate(0, 100%);
+transform: translate(0, 100%);
+opacity:1; /* Reveal desc DIV fully */
+}
+
+/*### Below CSS when applied to desc DIV slides the desc div from the right edge of the image ###*/
+
+.imagepluscontainer div.rightslide{
+width: 150px; /* reset from default */
+top:15px;
+right:0;
+left:auto;  /* reset from default */
+bottom:auto;  /* reset from default */
+padding-left:15px;
+-moz-border-radius: 0 8px 8px 0;
+-webkit-border-radius: 0 8px 8px 0;
+border-radius: 0 8px 8px 0;
+}
+
+.imagepluscontainer:hover div.rightslide{
+-moz-transform: translate(100%, 0);
+-webkit-transform: translate(100%, 0);
+-ms-transform: translate(100%, 0);
+-o-transform: translate(100%, 0);
+transform: translate(100%, 0);
+}
+
+/*### Below CSS when applied to desc DIV slides the desc div from the left edge of the image ###*/
+
+.imagepluscontainer div.leftslide{
+width: 150px;  /* reset from default */
+top:15px;
+left:0;
+bottom:auto;  /* reset from default */
+padding-left:15px;
+-moz-border-radius: 8px 0 0 8px;
+-webkit-border-radius: 8px 0 0 8px;
+border-radius: 8px 0 0 8px;
+}
+
+.imagepluscontainer:hover div.leftslide{
+-moz-transform: translate(-100%, 0);
+-webkit-transform: translate(-100%, 0);
+-ms-transform: translate(-100%, 0);
+-o-transform: translate(-100%, 0);
+transform:translate(-100%, 0);
+}
+
+/*### Below CSS when applied to desc DIV slides the desc div from the top edge of the image ###*/
+
+.imagepluscontainer div.upslide{
+top:0;
+bottom:auto;  /* reset from default */
+padding-bottom:10px;
+-moz-border-radius: 8px 8px 0 0;
+-webkit-border-radius: 8px 8px 0 0;
+border-radius: 8px 8px 0 0;
+}
+
+.imagepluscontainer:hover div.upslide{
+-moz-transform: translate(0, -100%);
+-webkit-transform: translate(0, -100%);
+-ms-transform: translate(0, -100%);
+-o-transform: translate(0, -100%);
+transform:translate(0, -100%);
+}
+
+</style>
+<style>
+    .content {
+        display: none;
+    }
+    
+    .wrapper:active .content {
+        display: block;
+    }
+    
+    .content:hover {
+        display: block;
+    }
+
+</style>
+
+
+
+<apex:form >     
+<apex:actionfunction name="showitem" action="{!show}" rerender="pb">
+    <apex:param value="" name="showtype" assignto="{!showtype}"/>
+</apex:actionfunction>  
+<div class="wrapper">
+    <div class="button">
+        toggle button       
+    </div>
+    <div class="content">
+            <ul>
+                <li>HI this is balaji</li>
+                <li>HI this is sravya</li>          
+            </ul>
+        </div>
+    
+
+</div>
+<div class="spotlightmenu">
+    <ul>
+    <li><a href="#" onclick="showitem('apexclass');"><span>Apex Classes</span></a></li>
+    <li><a href="#" onclick="showitem('vfpage');"><span>Visualforce Pages</span></a></li>
+    <li><a href="#" onclick="showitem('vfcomponent');"><span>Visualforce Components</span></a></li>
+    <li><a href="#" onclick="showitem('trigger');"><span>Triggers</span></a></li>
+    <li><a href="#" onclick="showitem('user');"><span>Users</span></a></li>
+    </ul>
+</div><br/><br/>
+<apex:pageBlock id="pb">
+      
+    <apex:pageBlock title="Apex Classes" rendered="{!classrender}">    
+        <apex:pageBlockTable value="{!lstapexclass}" var="cl">
+            <apex:column Headervalue="Name">
+                <div class="imagepluscontainer" style="width: 263px;height: 65px;left: 0px;top: 24px;">
+                    <apex:outputLink value="/{!cl.id}" target="_blank" styleclass="example1">{!cl.name}</apex:outputLink>
+                    <div class="desc rightslide">
+                            Hi {!$User.FirstName} now you are looking "{!cl.name}" class
+                    </div>
+                </div>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="Visualforce Pages" rendered="{!vfpagerender}">
+        <div style="float:right;"><apex:outputText value="No of Pages:" style="color:green;font-weight:bold;"/><apex:outputText value="{!lstapexpages.size}" style="color:red;font-weight:bold;"></apex:outputText></div>
+        <apex:pageBlockTable value="{!lstapexpages}" var="pg">
+            <apex:column headervalue="Name">
+                <div class="example1">
+                    <apex:outputLink value="/apex/{!pg.name}" target="_blank">{!pg.name}</apex:outputLink>    
+                </div>      
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="Visualforce Components" rendered="{!vfcomponentrender}">
+        <apex:pageBlockTable value="{!lstapexcomponent}" var="comp">
+            <apex:column Headervalue="Name">
+                <div class="example1">
+                    <apex:outputLink value="/apexcomponent/{!comp.name}" target="_blank">{!comp.name}</apex:outputLink>
+                </div>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="Triggers" rendered="{!trigrender}">
+        <apex:pageBlockTable value="{!lsttrigger}" var="trig">
+            <apex:column headervalue="Name">
+                <div class="example1">
+                    <apex:outputLink value="/{!trig.id}" target="_blank">{!trig.name}</apex:outputLink> 
+                </div>        
+            </apex:column>      
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+    <apex:pageBlock title="Users" rendered="{!userrender}">
+        <apex:pageBlockTable value="{!lstuser}" var="us">
+            <apex:column headervalue="Name">
+                <div class="example1">
+                    <apex:outputLink value="/{!us.id}" target="_blank">{!us.name}</apex:outputLink>
+                </div>
+            </apex:column>
+        </apex:pageBlockTable> 
+    </apex:pageBlock> 
+</apex:pageBlock>
+
+
+</apex:form>
+</apex:page>

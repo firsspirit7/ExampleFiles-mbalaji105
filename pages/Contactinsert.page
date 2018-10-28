@@ -1,0 +1,14 @@
+<apex:page controller="contactinsertc">
+
+<apex:form >
+<apex:pageBlock >
+<apex:outputLabel >LastName</apex:outputLabel>
+<apex:inputText value="{!ctinsert.lastname}"/>
+<apex:commandButton action="{!save}" value="save"/>
+
+</apex:pageBlock>
+
+</apex:form>
+
+  
+</apex:page>

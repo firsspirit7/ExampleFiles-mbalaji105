@@ -1,0 +1,12 @@
+<apex:page controller="wrappertest">
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!lst}" var="a">
+  <apex:column value="{!a.acc.name}"/>
+  <apex:column value="{!a.clg.name}"/>
+  <apex:column value="{!a.clg.Location__c}"/>
+  
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,15 @@
+<apex:page controller="actioncontroller">
+<apex:form >
+<apex:actionFunction name="func" action="{!Save1}"/>
+
+ <apex:commandButton value="Click Me" oncomplete="func()" action="{!save2}" reRender="out" status="start"/>
+ <apex:outputPanel id="out">
+ <apex:actionStatus id="start" >
+ Hiiii
+ 
+ 
+ 
+ </apex:actionStatus>
+ </apex:outputPanel>
+ </apex:form>
+</apex:page>

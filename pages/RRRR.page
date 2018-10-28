@@ -1,0 +1,49 @@
+<apex:page >
+  <apex:form id="theForm">
+    <apex:pageBlock id="thePageBlock">
+      <apex:pageBlockSection id="theSection">
+        <apex:pageBlockSectionItem id="theSectionItem">
+        <apex:outputText value="balaji" id="b"></apex:outputText>
+        All the
+        alerts refer to this component</apex:pageBlockSectionItem>
+        <!-- Works because this outputPanel has a direct parent 
+              with a "theSectionItem" child -->  
+    
+        <apex:outputPanel onclick="fun();">
+        First click here
+        </apex:outputPanel>
+      </apex:pageBlockSection>
+      <apex:pageBlockButtons id="theButtons" location="bottom">
+        <!-- Works because this outputPanel has a grandparent ("theSection")
+              with a "theSectionItem" child -->  
+    
+        <apex:outputPanel onclick="alert('
+                     {!$Component.theSection.theSectionItem}');">
+        Second click here<br />
+        </apex:outputPanel>
+        <!-- Works because this outputPanel has a distant parent 
+              with a "theForm" child. -->  
+    
+        <apex:outputPanel onclick="alert('
+                     {!$Component.theForm.thePageBlock.theSection.theSectionItem}');">
+        Third click here<br />
+        </apex:outputPanel>
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+    <!-- $Component will reference the common parent of this usage 
+         and the target, which is "theForm" -->  
+    
+    <apex:outputPanel onclick="alert('
+                     {!$Component.thePageBlock.theSection.theSectionItem}');">
+    Fourth click here</apex:outputPanel>
+  </apex:form>
+  <script>
+  function fun()
+  {
+  
+   var a=document.getElementById({!$Component.theForm.thePageBlock.theSection.theSectionItem}).value;
+   alert(a);
+  
+  }
+  </script>
+</apex:page>

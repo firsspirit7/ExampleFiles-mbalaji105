@@ -1,0 +1,30 @@
+<apex:page controller="accountdatacls">
+<apex:form >
+    <table border="1">
+        <tr>
+           <th>AccountName</th>
+       </tr>
+          <tr>
+            <td><apex:repeat value="{!accounts}"  var="a">
+                <tr>
+                  <td>
+                      
+                 <apex:commandLink value="{!a.acclst.name}" action="{!rendering}"/>
+               <apex:outputPanel rendered="{!ren}">  
+                 <apex:repeat value="{!accounts}" var="cont">
+                     
+                         {!cont.contlst.name}<br/>
+                   
+                 </apex:repeat>
+                 
+                </apex:outputPanel>  
+                  
+                  </td>
+                </tr>         
+               </apex:repeat>
+             </td>
+          </tr>
+         
+    </table>
+ </apex:form>
+</apex:page>

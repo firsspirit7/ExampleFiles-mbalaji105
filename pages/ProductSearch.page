@@ -1,0 +1,75 @@
+<apex:page controller="wrapperClassControllerprod" id="pg" sidebar="false" wizard="true"  title="ProductPage" setup="true" standardStylesheets="false">
+    <script type="text/javascript">
+		function checkAll(cb)
+		        {
+		            var inputElem = document.getElementsByTagName("input");           
+		            for(var i=0; i<inputElem.length; i++)
+		            {    
+		                 if(inputElem[i].id.indexOf("reccheck")!=-1)                          
+		                inputElem[i].checked = cb.checked;
+		            }
+		        }
+	</script>
+    
+    <apex:form id="fm">
+	    <apex:pageBlock >
+		        <apex:pageBlockButtons >
+			                <apex:commandButton value="Select" action="{!processSelected}" rerender="table"/>
+			                <apex:commandButton value="Cancel" action="{!Cancel}" />
+			     </apex:pageBlockButtons>
+			     <apex:pageBlock >
+		   			 <apex:inputtext />
+		              Filter By Field :<apex:selectlist value="{!getfieldnames}" multiselect="false" size="1" onchange="test1()">
+		                        			<apex:selectoptions value="{!getfield}"/>
+		                        			<apex:actionFunction name="test1" action="{!test1}" />
+		                   			   </apex:selectlist> &nbsp;&nbsp;&nbsp;&nbsp;
+	
+				                      <apex:selectlist value="{!getdatatypes}" multiselect="false" size="1">
+				                            <apex:selectoptions value="{!gettype}"/>
+				                       </apex:selectlist>
+				&nbsp;&nbsp;&nbsp;&nbsp;<apex:inputtext value="{!filter}"/>
+				 <apex:commandButton value="Search" action="{!search}"  rerender="optfinal"/>  
+				 	<apex:actionFunction name="fun" action="{!more}"/>
+				   						 	<apex:commandLink value="More Filters >>"  rerender="optpanel" onclick="fun();"/><br/>
+					
+					  <apex:outputpanel id="optpanel" rendered="{!ren}"> 
+					   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<apex:selectlist value="{!getfieldnames1}" multiselect="false" size="1" onchange="test1()" rendered="{!ren}">
+					                        <apex:selectoptions value="{!getfield}"/>
+					                        <apex:actionFunction name="test1" action="{!test1}" />
+				                       </apex:selectlist> &nbsp;&nbsp;&nbsp;&nbsp;
+			    
+				    					<apex:selectlist value="{!getdatatypes1}" multiselect="false" size="1" rendered="{!ren}">
+				                         		<apex:selectoptions value="{!gettype}"/>
+				                        </apex:selectlist>
+				&nbsp;&nbsp;&nbsp;&nbsp;<apex:inputtext value="{!filter1}" rendered="{!ren}"/><br/>
+				 
+									 <apex:actionFunction name="fun1" action="{!few}"/>
+									 <apex:commandLink value="Fewfilters" rerender="optpanel" onclick="fun1();"/>
+		
+				    </apex:outputpanel> 
+				       <apex:commandButton value="Search" action="{!search}"  rerender="optfinal"/> 
+									
+		    </apex:pageBlock>
+		    	<apex:outputpanel id="optfinal" rendered="{!finalblock}">
+				        <apex:pageBlock id="pb" >
+				              <apex:pageBlockTable value="{!Products}" var="c" id="table">
+				                	<apex:column >
+				                           
+					                   	<apex:facet name="header">
+					                    		<apex:inputCheckbox onclick="checkAll(this)"/>
+					                     </apex:facet>
+					                    <apex:inputCheckbox value="{!c.selected}" id="reccheck"/>
+				           
+				                	</apex:column>
+				                <!-- This is how we access the contact values within our cContact container/wrapper -->
+				                <apex:column value="{!c.con.Name}" />
+				                <apex:column value="{!c.con.ProductCode}"/>
+				                <apex:column value="{!c.con.Description}"/>
+				                <apex:column value="{!c.con.Family}"/>
+				             
+				            </apex:pageBlockTable>
+				        </apex:pageBlock>
+		        </apex:outputpanel>
+	        </apex:pageBlock>
+    </apex:form>
+</apex:page>

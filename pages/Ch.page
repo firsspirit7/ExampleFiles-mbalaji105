@@ -1,0 +1,20 @@
+<apex:page id="pg" standardController="account" recordSetVar="a">
+<apex:form id="f1">
+  <apex:outputLabel value="Checkbox" for="theCheckbox"/>
+<apex:selectCheckboxes id="ab">
+</apex:selectCheckboxes>
+<apex:commandButton value="delet" onclick="fun();"/>
+</apex:form>
+<script>
+function fun()
+{
+ if(document.getElementById("pg:f1:ab").checked==true)
+  {
+   alert("hi");
+  
+  }
+
+
+}
+</script>
+</apex:page>

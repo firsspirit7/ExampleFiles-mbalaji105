@@ -1,0 +1,6 @@
+<apex:page controller="Arvind">
+  <apex:form >
+  <apex:commandLink action="{!submit}" Value="submit"/>
+  
+  </apex:form>
+  </apex:page>

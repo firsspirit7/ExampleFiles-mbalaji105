@@ -1,0 +1,22 @@
+<apex:page controller="pagetestingcontroller1" id="pg">
+<apex:form id="fm">
+
+ <apex:pageBlock id="pb">
+ <apex:pageBlockSection id="ps">
+ <apex:outputLabel >Name:</apex:outputLabel>
+ <apex:outputtext id="txt"  value="{!name}" style="border: solid 1px #000;width:150px;height:25px;"/>
+
+ </apex:pageBlockSection>
+ 
+ </apex:pageBlock>
+ </apex:form>
+ <script>
+ function fun(){
+ alert('balu');
+ var name=document.getElementById('pg:fm:pb:ps:txt').value;
+ document.getElementById('pg:fm:pb:ps:txt').value=name;
+ alert(name);
+ alert('hi');
+ }
+ </script>
+</apex:page>

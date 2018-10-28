@@ -1,0 +1,23 @@
+<apex:page standardController="Account" extensions="mytestcontroller" id="pg" tabStyle="Leave__c" sidebar="false">
+<apex:form id="f1">
+    <apex:pageBlock id="pb">
+    <apex:pageBlockSection id="pbs" title="Account Detail Page">
+       
+       <apex:inputField value="{!account.phone}">
+            <apex:actionSupport event="onclick" onsubmit="val()"/>
+       </apex:inputField>
+
+        <apex:inputHidden value="{!clic}" id="ren"/>
+
+    </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:commandButton action="{!save}" value="Save" rendered="{!clic}"/>
+</apex:form>
+
+<script>
+function val(){
+  document.getElementById('pg:f1:pb:pbs:ren').value='true';
+}
+</script>
+
+</apex:page>

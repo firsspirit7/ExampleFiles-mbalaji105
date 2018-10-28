@@ -1,0 +1,12 @@
+<apex:page controller="FeedXml" sidebar="false" showHeader="false">
+<apex:form >
+  <apex:pageBlock >
+      <apex:pageBlockButtons location="top">
+          <apex:commandButton value="Show" action="{!generateFeedXml}" reRender="data"/>
+      </apex:pageBlockButtons>
+      <apex:outputPanel id="data">
+          {!FeedData}
+      </apex:outputPanel>  
+  </apex:pageBlock>  
+</apex:form>
+</apex:page>

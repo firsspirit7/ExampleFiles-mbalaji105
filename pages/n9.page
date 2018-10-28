@@ -1,0 +1,19 @@
+<apex:page StandardController="Account" recordSetVar="accounts" showHeader="false" sidebar="false">
+<br/>
+<br/>
+<br/>
+<apex:dataTable frame="lhs" value="{!accounts}" var="a" align="center" bgcolor="durgaprasadchowdary" >
+<apex:column >
+<apex:facet name="header"><u>Name</u></apex:facet>
+<apex:outputText value="{!a.name}"/>&nbsp;&nbsp;
+</apex:column>&nbsp;&nbsp;&nbsp;
+<apex:column >
+<apex:facet name="header">&nbsp;&nbsp;&nbsp;&nbsp;<u>Phone</u></apex:facet>
+<apex:outputText value="{!a.Phone}"/>&nbsp;&nbsp;
+</apex:column>&nbsp;&nbsp;&nbsp;
+<apex:column >
+<apex:facet name="header">&nbsp;&nbsp;&nbsp;&nbsp;<u>Site</u></apex:facet>
+&nbsp;&nbsp;&nbsp;&nbsp;<apex:outputText value="{!a.Site}"/>
+</apex:column>&nbsp;&nbsp;&nbsp;
+</apex:dataTable>
+</apex:page>

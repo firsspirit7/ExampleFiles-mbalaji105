@@ -1,0 +1,12 @@
+<apex:page controller="AccountController" tabStyle="Account">
+<apex:form >
+<apex:pageBlock >
+<apex:DataTable value="{!acc}" var="a">
+<apex:column headerValue="ID" value="{!a.id}"/>&nbsp;&nbsp;
+<apex:column headerValue="Name" value="{!a.Name}"/>
+</apex:DataTable>
+
+</apex:pageBlock>
+
+</apex:form>
+</apex:page>

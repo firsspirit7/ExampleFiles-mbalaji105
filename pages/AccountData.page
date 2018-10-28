@@ -1,0 +1,36 @@
+<apex:page controller="QueryNative">
+    <apex:sectionHeader title="Some Awesome Page"/>
+ 
+    <apex:form >
+        <apex:pageBlock title="My Radtacular Account List" id="pageBlock">
+            <apex:pageBlockTable value="{!myAccounts}" var="a" id="myAccounts">
+                <apex:column value="{!a.Name}"/>
+                <apex:column value="{!a.Type}"/>
+                <apex:column value="{!a.Phone}"/>
+                <apex:column value="{!a.BillingCity}"/>
+                <apex:column value="{!a.BillingState}"/>
+                <apex:column value="{!a.NumberOfEmployees}"/>
+                <apex:column value="{!a.Industry}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+ 
+        <apex:pageBlock title="Wannabe Accounts">
+            <apex:pageBlockButtons >
+                <apex:commandButton value="Add Select Accounts" action="{!addSelectedAccounts}" rerender="myAccounts,accountList" status="status"/>
+                <apex:actionStatus id="status">
+                    <apex:facet name="start">
+                        Adding...
+                    </apex:facet>
+                </apex:actionStatus>
+            </apex:pageBlockButtons>
+ 
+            <apex:pageBlockTable value="{!accountList}" var="aw" id="accountList">
+                <apex:column width="1px">
+                    <apex:inputCheckbox value="{!aw.selected}"/>
+                </apex:column>
+                <apex:column value="{!aw.a.Name}"/>
+                <apex:column value="{!aw.a.BillingCity}"/>
+            </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

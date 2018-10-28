@@ -1,0 +1,9 @@
+<apex:page >
+<apex:tabPanel switchType="client" selectedTab="name1">
+  <apex:tab label="One" name="name1">My name is balaji</apex:tab>
+  <apex:tab label="two" name="name2">
+  <apex:outputLink value="http:\www.google.com">google</apex:outputLink>
+  
+  </apex:tab>
+</apex:tabPanel>
+</apex:page>

@@ -1,0 +1,16 @@
+<apex:page standardController="EmployeeDetail__c" recordSetVar="emp">
+  <apex:form >
+  <apex:pageBlock >
+<apex:pageBlockTable value="{!emp}" var="e" rendered="true">
+<apex:column HeaderValue="Action">
+<apex:commandLink value="Edit"/></apex:column>
+<apex:column value="{!e.Name}" HeaderValue="Name"/>
+<apex:column value="{!e.Department__c}" HeaderValue="Department"/>
+<apex:column value="{!e.Email__c}" HeaderValue="Email"/>
+<apex:column value="{!e.Phone__c}" HeaderValue="PhoneNumber"/>
+<apex:column value="{!e.Salary__c}" HeaderValue="Salary"/>
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

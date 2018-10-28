@@ -1,0 +1,8 @@
+<apex:page controller="exampleCon2">
+<apex:form >
+  <apex:actionFunction action="{!sayHello}" rerender="out" name="fun"/>
+  <apex:outputText value="Hello "/>
+           <apex:facet name="stop"></apex:facet>
+
+  </apex:form>
+  </apex:page>

@@ -1,0 +1,55 @@
+<apex:page standardController="Account" showHeader="false" sidebar="false" >
+<apex:outputlink value="{! URLFOR($Action.Account.New)}">Create</apex:outputlink>
+<apex:outputLink value="{!$Page.Account123}">Account</apex:outputLink>
+<p>Here's the Owner of this account: {! account.owner.name}</p>
+<apex:relatedList list="Cases" />
+<apex:detail />
+
+<apex:pageBlock >
+
+<apex:pageBlockSection >
+You are viewing:{!$User.FirstName}<br/></apex:pageBlockSection>
+<apex:pageBlockSection >
+The Last name {!$User.LastName}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+Today Date is {!Today()}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+
+The name of user {!$User.FirstName  & $User.LastName}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+Date after 7 days {!Today()+7}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+The Max of {!max(1,9,2,8,18)}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+The Squre of" {!sqrt(46)}<br/>
+</apex:pageBlockSection>
+<apex:pageBlockSection >
+The saleforce.com contains force.com:{!contains('salesforce.com','force.com')}<br/>
+</apex:pageBlockSection>
+{! IF ( CONTAINS('salesforce.com','force.com'), 'Yep', 'Nah') }
+{!if(contains('Aravind','v'),'yes','no')}
+{! IF ( DAY(TODAY()) > 14, 'After the 14th', 'Before or on the 14th') }
+</apex:pageBlock>
+<apex:pageBlock title="Custom Output">
+    <apex:pageBlockSection title="Custom Section Title">
+        <apex:outputField value="{!account.name}"/>
+        <apex:outputField value="{!account.owner.name}"/>
+    </apex:pageBlockSection>
+</apex:pageBlock>
+<apex:pageBlock >
+<apex:pageBlockTable value="{! account.contacts}" var="item">
+<apex:column value="{! item.name}"/>
+</apex:pageBlockTable>
+
+</apex:pageBlock>
+    <apex:repeat value="{!account.contacts}" var="item">
+        <li><apex:outputText value="{!item.name}"/></li>
+    </apex:repeat>
+
+
+</apex:page>
